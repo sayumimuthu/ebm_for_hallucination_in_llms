@@ -1,0 +1,30 @@
+# Energy-fusion / calibration hyperparameters consumed by
+# scripts/compute_energy_features.py (currently passed as CLI flags with
+# these same defaults; kept here as the documented, shareable reference
+# config for a run).
+sinkhorn:
+  reg: 0.1
+  tau: 0.7
+  quantile: 0.9
+  metric: cosine
+  max_claims: 32
+
+evidence:
+  retriever_top_k: 5
+  tau: 0.2
+
+fusion_weights: # v0 uniform linear fusion (energies.factorized_energy.composite_energy)
+  inv: 1.0
+  ev: 1.0
+  cl: 1.0
+  geo: 1.0
+
+calibration:
+  alpha: 0.1 # conformal miscoverage level
+  accuracy_threshold: 1.0 # accuracy >= this => "trusted"/"factual" for calibration
+
+nce:
+  steps: 150
+  lr: 0.03
+  l2: 0.001
+  num_negatives: 2

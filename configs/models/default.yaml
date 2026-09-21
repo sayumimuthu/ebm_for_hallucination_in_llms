@@ -1,0 +1,9 @@
+# Passed through to hallucination_energy.generation.hf_model.HuggingfaceModel.
+# This is documentation of the expected shape; generate.py currently reads
+# equivalent settings from CLI args (via the upstream SEP arg parser) rather
+# than from this file directly — wire up YAML loading here once you're ready
+# to stop depending on that external parser.
+model_name: Llama2-7b
+stop_sequences: default
+max_new_tokens: 128
+cache_dir: null  # defaults to HF_HOME env var

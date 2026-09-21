@@ -1,2 +1,4 @@
-# ebm_for_hallucination_in_llms
-Multi-factor energy-based hallucination detection framework
+# hallucination-energy
+
+A factorized, claim-level **energy-based model (EBM)** for detecting LLM
+hallucinations. 

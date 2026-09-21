@@ -1,0 +1,9 @@
+# Dataset-level generation settings (mirrors the upstream SEP arg parser's
+# defaults). See hallucination_energy/data/loaders.py for the TODO on
+# porting load_ds() so this file can actually drive dataset loading.
+dataset: bioasq
+use_context: true
+answerable_only: false
+num_samples: 100
+num_generations: 10
+num_few_shot: 5

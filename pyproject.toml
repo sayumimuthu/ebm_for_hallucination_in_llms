@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hallucination-energy"
+version = "0.1.0"
+description = "Factorized, claim-level energy-based hallucination detection for LLMs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.24",
+    "torch>=2.1",
+    "transformers>=4.38",
+    "accelerate>=0.27",
+    "huggingface_hub>=0.20",
+    "tqdm>=4.66",
+    "datasets>=2.18",   # hallucination_energy.data.loaders (squad/trivia_qa/nq/bioasq/svamp)
+    "evaluate>=0.4",    # hallucination_energy.evaluation.accuracy (squad F1 metric)
+]
+
+[project.optional-dependencies]
+# Better embeddings / density models / evidence scoring than the bundled
+# TF-IDF / hashed-ngram / Gaussian fallbacks. Recommended for real experiments.
+full = [
+    "sentence-transformers>=2.5",
+    "scikit-learn>=1.4",
+    "scipy>=1.11",
+]
+wandb = ["wandb>=0.16"]
+# Only needed for the optional `llm_gpt-3.5`/`llm_gpt-4` accuracy metric
+# (evaluation.accuracy.get_gpt_metric) and its retry logic.
+gpt_judge = ["openai>=1.0", "tenacity>=8.0"]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+src = ["src", "scripts", "tests"]
