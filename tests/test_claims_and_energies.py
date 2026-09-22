@@ -14,7 +14,7 @@ import pytest
 from hallucination_energy.calibration.conformal import conformal_pvalue, conformal_threshold
 from hallucination_energy.claims.extraction import extract_claims
 from hallucination_energy.energies.codelength import calibrate_surprisal_stats, codelength_energy
-from hallucination_energy.energies.embeddings import embed_texts, l2_normalize, pairwise_cost
+from hallucination_energy.energies.embeddings import embed_texts, fit_whitener, apply_whitener, l2_normalize, pairwise_cost
 from hallucination_energy.energies.evidence import evidence_energy
 from hallucination_energy.energies.factorized_energy import compute_energy_parts, composite_energy
 from hallucination_energy.energies.geometry import fit_geometry_density, geometry_energy
@@ -57,6 +57,34 @@ def test_embed_texts_fallback_shapes():
     assert np.allclose(norms, 1.0, atol=1e-4)
 
 
+def test_embed_texts_falls_back_on_empty_tfidf_vocabulary():
+    """Regression test for a real crash on a 200-example run:
+    TfidfVectorizer.fit_transform raises ValueError('empty vocabulary; ...')
+    when every text in the batch is too short (e.g. single digits/letters)
+    to produce any token under its default 2+-character tokenizer. This
+    should fall back to the hashed embedding instead of propagating."""
+    embs, metric = embed_texts(["2", "a"])
+    assert embs.shape[0] == 2
+    assert np.all(np.isfinite(embs))
+
+
+def test_embed_texts_pair_falls_back_on_empty_tfidf_vocabulary():
+    from hallucination_energy.energies.embeddings import embed_texts_pair
+
+    e1, e2, _ = embed_texts_pair(["2"], ["a"])
+    assert e1.shape[0] == 1 and e2.shape[0] == 1
+    assert np.all(np.isfinite(e1)) and np.all(np.isfinite(e2))
+
+
+def test_embed_texts_with_vectorizer_falls_back_on_empty_tfidf_vocabulary():
+    from hallucination_energy.energies.embeddings import embed_texts_with_vectorizer
+
+    embs, _, vectorizer = embed_texts_with_vectorizer(["2", "a"])
+    assert embs.shape[0] == 2
+    assert vectorizer is None  # hashed fallback engaged, nothing to persist
+    assert np.all(np.isfinite(embs))
+
+
 def test_pairwise_cost_and_sinkhorn_zero_for_identical_sets():
     embs, _ = embed_texts(["a fact about paris", "a fact about berlin"], metric="cosine")
     C = pairwise_cost(embs, embs, metric="cosine")
@@ -94,6 +122,32 @@ def test_codelength_energy_and_calibration():
     assert stats["mean"] > 0  # only the accurate example contributes
     energy = codelength_energy([-0.1, -0.2, -0.1], stats=stats, use_zscore=True)
     assert isinstance(energy, float)
+
+
+def test_whitener_truncates_to_data_rank_with_few_samples_high_dimensional_features():
+    """Regression test for a real failure observed end-to-end: with far
+    fewer samples than feature dimensions (the common case for the
+    "trusted claim" geometry corpus with TF-IDF fallback embeddings, up to
+    4096-D), a full-ambient-dimensionality whitener feeds a GMM thousands
+    of directions the data never actually supports. sklearn's per-dimension
+    covariance regularization summed over ~4000 such directions produced a
+    geometry energy of ~99,000-99,900 (confirmed via energy_matrix.npz on a
+    real 20-example run) versus single-digit-to-tens values for the other
+    three energies — a curse-of-dimensionality artifact, not signal.
+
+    The fix: truncate whitening output to the data's actual rank
+    (at most n_samples - 1 directions can carry any signal), so any
+    downstream density model only ever sees informative dimensions."""
+    rng = np.random.default_rng(0)
+    n_samples, n_features = 8, 200  # n << p, matching the real failure mode
+    X = rng.normal(size=(n_samples, n_features)).astype(np.float32)
+
+    whitener = fit_whitener(X)
+    whitened = apply_whitener(X, whitener)
+
+    assert whitened.shape == (n_samples, n_samples - 1)  # truncated, not full 200-D
+    assert np.all(np.isfinite(whitened))
+    assert np.abs(whitened).max() < 100 * np.abs(X).max()
 
 
 def test_geometry_energy_higher_for_outlier():

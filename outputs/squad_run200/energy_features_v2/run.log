@@ -1,0 +1,20 @@
+2026-09-22 18:07:15 INFO     No device provided, using cuda:0
+2026-09-22 18:07:15 INFO     No modules.json found for sentence-transformers/all-MiniLM-L6-v2, initializing a new SentenceTransformer model.
+{
+  "conformal_threshold": 20.25136947631836,
+  "alpha": 0.1,
+  "n_calib": 200,
+  "per_factor_auroc": {
+    "inv": 0.7233347239605062,
+    "ev": 0.5935196773744958,
+    "cl": 0.540814907523293,
+    "geo": 0.43916006118759554
+  },
+  "learned_weights": [
+    0.21091394126415253,
+    -0.020641492679715157,
+    0.10864301025867462,
+    0.828096866607666
+  ],
+  "learned_bias": 1.053721643273775e-08
+}

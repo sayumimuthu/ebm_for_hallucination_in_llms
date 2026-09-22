@@ -25,6 +25,22 @@ from hallucination_energy.energies.embeddings import (
 )
 
 
+MIN_SAMPLES_PER_GMM_COMPONENT = 5
+
+# Whitening was previously truncated to `n_samples - 1` dimensions (the
+# data's full rank) — correct in principle, but on a real 200-example run
+# with ~100+ "trusted" claims that still left ~99 output dimensions, which
+# a full-covariance GMM cannot estimate reliably (a full covariance in d
+# dimensions has d(d+1)/2 free parameters: ~4,950 for d=99). Result:
+# geometry energy stayed in the tens of thousands (mean ~48,359 on that
+# run) despite the earlier component-count fix, because the fix only
+# accounted for sample count, never dimensionality. Capping the whitened
+# output to a small, fixed number of dimensions — regardless of how large
+# the trusted corpus grows — keeps density estimation in a regime GMM can
+# actually handle.
+MAX_GEOMETRY_DIMS = 32
+
+
 def fit_geometry_density(
     claim_corpus: List[str],
     metric: str = "cosine",
@@ -34,14 +50,41 @@ def fit_geometry_density(
     if not claim_corpus:
         return None, {"metric": metric, "whitener": None, "vectorizer": None}
     embeddings, _, vectorizer = embed_texts_with_vectorizer(claim_corpus, metric="euclidean")
-    whitener = fit_whitener(embeddings) if whiten else None
+    whitener = fit_whitener(embeddings, max_components=MAX_GEOMETRY_DIMS) if whiten else None
     Z = apply_whitener(embeddings, whitener) if whitener else embeddings
     if metric == "cosine":
         Z = l2_normalize(Z)
     density: Any
     if HAS_GMM and len(claim_corpus) >= min(n_components, 2):
-        K = min(n_components, len(claim_corpus))
-        gmm = GaussianMixture(n_components=K, covariance_type="full", reg_covar=1e-5, random_state=42)
+        # Cap K by how many samples can actually support a component, not
+        # just by n_components/corpus size: with too few "trusted" claims
+        # per component, each Gaussian degenerates toward a single point
+        # with only `reg_covar`-scale variance, making any new example look
+        # like an extreme outlier. Confirmed on real data: 8 trusted claims
+        # with K=8 produced a geometry energy of ~37,000 on held-out
+        # examples; K=1 (well-supported) produced ~3 — same embeddings,
+        # same whitening, three orders of magnitude apart purely from an
+        # overparameterized component count.
+        max_supportable = max(1, len(claim_corpus) // MIN_SAMPLES_PER_GMM_COMPONENT)
+        K = min(n_components, len(claim_corpus), max_supportable)
+        # `covariance_type="full"` needs d(d+1)/2 parameters per component —
+        # even after capping dimensionality to MAX_GEOMETRY_DIMS, "diag"
+        # (d parameters per component) is far more sample-efficient and a
+        # more appropriate default for this data regime, where we have no
+        # particular reason to expect strong cross-dimension covariance
+        # structure to matter more than just getting stable per-dimension
+        # variance estimates at all.
+        #
+        # NOTE: an earlier version of this line tried to scale reg_covar
+        # to Z's own observed variance instead of this fixed constant, to
+        # handle near-zero-variance "trusted" corpora more gracefully. That
+        # was reverted — on a degenerate near-duplicate-text reproduction it
+        # made the blowup 10x *worse* (the relative scaling follows the
+        # data's variance down to ~0 right when you'd want a floor to hold),
+        # and there wasn't enough real evidence it helps the actual failure
+        # mode observed on ada to justify the change. Left as a known,
+        # unresolved edge case — see README/commit notes.
+        gmm = GaussianMixture(n_components=K, covariance_type="diag", reg_covar=1e-5, random_state=42)
         gmm.fit(Z)
         density = ("gmm", gmm)
     elif HAS_SKLEARN:

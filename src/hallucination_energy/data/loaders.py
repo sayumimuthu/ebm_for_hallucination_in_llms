@@ -34,7 +34,10 @@ def load_ds(dataset_name: str, seed: int, add_options: Optional[bool] = None) ->
     train_dataset, validation_dataset = None, None
 
     if dataset_name == "squad":
-        dataset = datasets.load_dataset("squad_v2")
+        # HF Hub deprecated resolving bare, un-namespaced dataset ids via
+        # loading scripts; "squad_v2" alone now 404s (HfUriError). Use the
+        # canonical namespaced id.
+        dataset = datasets.load_dataset("rajpurkar/squad_v2")
         train_dataset = dataset["train"]
         validation_dataset = dataset["validation"]
 
@@ -59,7 +62,8 @@ def load_ds(dataset_name: str, seed: int, add_options: Optional[bool] = None) ->
         validation_dataset = _validation_dataset + train_dataset
 
     elif dataset_name == "nq":
-        dataset = datasets.load_dataset("nq_open")
+        # Same fix as squad_v2 above: use the namespaced id.
+        dataset = datasets.load_dataset("google-research-datasets/nq_open")
         train_dataset = dataset["train"]
         validation_dataset = dataset["validation"]
 

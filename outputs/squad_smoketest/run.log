@@ -1,0 +1,1178 @@
+2026-09-22 07:57:20 INFO     HTTP Request: GET https://huggingface.co/api/whoami-v2 "HTTP/1.1 200 OK"
+Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2026-09-22 07:57:20 WARNING  Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2026-09-22 07:57:20 INFO     Forcing `answerable_only=True` for squad dataset.
+2026-09-22 07:57:20 INFO     HTTP Request: HEAD https://huggingface.co/datasets/rajpurkar/squad_v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-09-22 07:57:21 INFO     HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/rajpurkar/squad_v2/3ffb306f725f7d2ce8394bc1873b24868140c412/README.md?%2Fdatasets%2Frajpurkar%2Fsquad_v2%2Fresolve%2Fmain%2FREADME.md=&etag=%224fc8366e136f6717d9ece75bb05adc3a07c6c6ea%22 "HTTP/1.1 200 OK"
+2026-09-22 07:57:21 INFO     HTTP Request: HEAD https://huggingface.co/datasets/rajpurkar/squad_v2/resolve/3ffb306f725f7d2ce8394bc1873b24868140c412/squad_v2.py "HTTP/1.1 404 Not Found"
+2026-09-22 07:57:23 INFO     HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/rajpurkar/squad_v2/rajpurkar/squad_v2.py "HTTP/1.1 404 Not Found"
+2026-09-22 07:57:23 INFO     HTTP Request: GET https://huggingface.co/api/datasets/rajpurkar/squad_v2/revision/3ffb306f725f7d2ce8394bc1873b24868140c412 "HTTP/1.1 200 OK"
+2026-09-22 07:57:24 INFO     HTTP Request: HEAD https://huggingface.co/datasets/rajpurkar/squad_v2/resolve/3ffb306f725f7d2ce8394bc1873b24868140c412/.huggingface.yaml "HTTP/1.1 404 Not Found"
+2026-09-22 07:57:27 INFO     HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=rajpurkar/squad_v2 "HTTP/1.1 200 OK"
+2026-09-22 07:57:27 INFO     HTTP Request: GET https://huggingface.co/api/datasets/rajpurkar/squad_v2/tree/3ffb306f725f7d2ce8394bc1873b24868140c412/squad_v2?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-22 07:57:28 INFO     HTTP Request: GET https://huggingface.co/api/datasets/rajpurkar/squad_v2/tree/3ffb306f725f7d2ce8394bc1873b24868140c412?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-09-22 07:57:28 INFO     HTTP Request: HEAD https://huggingface.co/datasets/rajpurkar/squad_v2/resolve/3ffb306f725f7d2ce8394bc1873b24868140c412/dataset_infos.json "HTTP/1.1 404 Not Found"
+2026-09-22 07:57:28 INFO     Train dataset: Dataset({
+    features: ['id', 'title', 'context', 'question', 'answers'],
+    num_rows: 130319
+})
+2026-09-22 07:57:35 INFO     Prompt is: Answer the following question as briefly as possible.
+Question: What events ended the war with Japan?
+Answer: atomic bombings of Hiroshima and Nagasaki
+
+Question: What was one of the first uses of a greenhouse?
+Answer: produce cucumbers year-round for the Roman emperor Tiberius
+
+Question: Through the Chicago Star Partnership, what is provided to students from Chicago public schools that meet further educational criteria?
+Answer: scholarships
+
+Question: What name is given to the bronze line on the floor of a heliometer?
+Answer: la Meridiana
+
+Question: How many hostages were taken in the US Embassy seizure?
+Answer: 52 personnel and citizens
+
+
+2026-09-22 07:57:36 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:36 INFO     HTTP Request: GET https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:37 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:37 INFO     HTTP Request: GET https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:37 INFO     HTTP Request: GET https://huggingface.co/api/models/meta-llama/Llama-2-7b-chat-hf/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-22 07:57:37 INFO     HTTP Request: GET https://huggingface.co/api/models/meta-llama/Llama-2-7b-chat-hf/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-22 07:57:38 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/tokenizer.model "HTTP/1.1 302 Found"
+2026-09-22 07:57:38 INFO     HTTP Request: GET https://huggingface.co/api/models/meta-llama/Llama-2-7b-chat-hf/xet-read-token/f5db02db724555f92da89c216ac04704f23d4590 "HTTP/1.1 200 OK"
+2026-09-22 07:57:44 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/tokenizer.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:45 INFO     HTTP Request: GET https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/tokenizer.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:45 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-09-22 07:57:46 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:46 INFO     HTTP Request: GET https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:46 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-09-22 07:57:47 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:48 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-09-22 07:57:49 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:49 INFO     HTTP Request: GET https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-09-22 07:57:49 INFO     HTTP Request: GET https://huggingface.co/api/models/meta-llama/Llama-2-7b-chat-hf/revision/main "HTTP/1.1 200 OK"
+2026-09-22 07:57:50 INFO     HTTP Request: GET https://huggingface.co/api/models/meta-llama/Llama-2-7b-chat-hf/tree/f5db02db724555f92da89c216ac04704f23d4590?recursive=true&expand=false "HTTP/1.1 200 OK"
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [12:30<12:30, 750.28s/it]Fetching 2 files: 100%|██████████| 2/2 [26:47<00:00, 813.36s/it]Fetching 2 files: 100%|██████████| 2/2 [26:47<00:00, 803.90s/it]
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [03:16<15:49:22, 196.42s/it]Loading weights:   1%|          | 2/291 [05:46<13:35:06, 169.23s/it]Loading weights:   2%|▏         | 5/291 [06:33<4:42:13, 59.21s/it]  Loading weights:   2%|▏         | 6/291 [07:21<4:28:28, 56.52s/it]Loading weights:   3%|▎         | 8/291 [07:32<2:45:22, 35.06s/it]Loading weights:   3%|▎         | 9/291 [07:56<2:32:01, 32.35s/it]Loading weights:   3%|▎         | 10/291 [08:20<2:21:56, 30.31s/it]Loading weights:   4%|▍         | 11/291 [08:23<1:47:59, 23.14s/it]Loading weights:   4%|▍         | 13/291 [09:21<1:58:36, 25.60s/it]Loading weights:   5%|▍         | 14/291 [10:04<2:17:18, 29.74s/it]Loading weights:   5%|▌         | 15/291 [10:45<2:30:20, 32.68s/it]Loading weights:   5%|▌         | 16/291 [10:46<1:50:46, 24.17s/it]Loading weights:   6%|▌         | 17/291 [11:09<1:49:41, 24.02s/it]Loading weights:   6%|▌         | 18/291 [11:21<1:33:21, 20.52s/it]Loading weights:   7%|▋         | 19/291 [11:58<1:54:39, 25.29s/it]Loading weights:   7%|▋         | 21/291 [11:59<1:02:57, 13.99s/it]Loading weights:   8%|▊         | 22/291 [12:38<1:30:32, 20.20s/it]Loading weights:   8%|▊         | 23/291 [13:22<1:57:43, 26.36s/it]Loading weights:   8%|▊         | 24/291 [14:19<2:34:23, 34.69s/it]Loading weights:   9%|▉         | 26/291 [14:22<1:29:29, 20.26s/it]Loading weights:   9%|▉         | 27/291 [14:45<1:31:18, 20.75s/it]Loading weights:  10%|▉         | 28/291 [15:09<1:34:38, 21.59s/it]Loading weights:  10%|▉         | 29/291 [15:21<1:23:17, 19.07s/it]Loading weights:  11%|█         | 31/291 [16:13<1:35:58, 22.15s/it]Loading weights:  11%|█         | 32/291 [16:55<1:55:04, 26.66s/it]Loading weights:  11%|█▏        | 33/291 [17:35<2:09:16, 30.07s/it]Loading weights:  12%|█▏        | 34/291 [17:35<1:35:10, 22.22s/it]Loading weights:  12%|█▏        | 35/291 [17:59<1:36:17, 22.57s/it]Loading weights:  12%|█▏        | 36/291 [18:20<1:34:56, 22.34s/it]Loading weights:  13%|█▎        | 37/291 [18:23<1:11:05, 16.79s/it]Loading weights:  13%|█▎        | 38/291 [18:47<1:18:28, 18.61s/it]Loading weights:  14%|█▎        | 40/291 [19:25<1:19:14, 18.94s/it]Loading weights:  14%|█▍        | 41/291 [20:22<1:57:23, 28.17s/it]Loading weights:  14%|█▍        | 42/291 [21:09<2:16:56, 33.00s/it]Loading weights:  15%|█▌        | 44/291 [21:22<1:30:01, 21.87s/it]Loading weights:  15%|█▌        | 45/291 [21:30<1:16:16, 18.61s/it]Loading weights:  16%|█▌        | 46/291 [21:54<1:21:36, 19.99s/it]Loading weights:  16%|█▌        | 47/291 [22:18<1:25:19, 20.98s/it]Loading weights:  16%|█▋        | 48/291 [22:18<1:02:10, 15.35s/it]Loading weights:  17%|█▋        | 49/291 [22:57<1:28:10, 21.86s/it]Loading weights:  17%|█▋        | 50/291 [23:36<1:47:32, 26.77s/it]Loading weights:  18%|█▊        | 51/291 [24:24<2:11:47, 32.95s/it]Loading weights:  18%|█▊        | 53/291 [24:39<1:24:54, 21.41s/it]Loading weights:  19%|█▊        | 54/291 [25:02<1:26:27, 21.89s/it]Loading weights:  19%|█▉        | 55/291 [25:23<1:24:16, 21.43s/it]Loading weights:  19%|█▉        | 56/291 [25:26<1:04:25, 16.45s/it]Loading weights:  20%|█▉        | 58/291 [26:23<1:24:38, 21.80s/it]Loading weights:  20%|██        | 59/291 [27:06<1:43:57, 26.88s/it]Loading weights:  21%|██        | 60/291 [27:46<1:55:40, 30.05s/it]Loading weights:  21%|██        | 61/291 [27:46<1:24:57, 22.16s/it]Loading weights:  21%|██▏       | 62/291 [28:09<1:25:46, 22.48s/it]Loading weights:  22%|██▏       | 63/291 [28:24<1:17:04, 20.28s/it]Loading weights:  22%|██▏       | 64/291 [28:31<1:02:51, 16.61s/it]Loading weights:  22%|██▏       | 65/291 [28:55<1:10:19, 18.67s/it]Loading weights:  23%|██▎       | 66/291 [28:56<49:52, 13.30s/it]  Loading weights:  23%|██▎       | 67/291 [29:34<1:16:58, 20.62s/it]Loading weights:  23%|██▎       | 68/291 [30:25<1:50:50, 29.82s/it]Loading weights:  24%|██▎       | 69/291 [31:15<2:12:35, 35.84s/it]Loading weights:  24%|██▍       | 70/291 [31:16<1:33:00, 25.25s/it]Loading weights:  24%|██▍       | 71/291 [31:26<1:15:54, 20.70s/it]Loading weights:  25%|██▍       | 72/291 [31:38<1:06:03, 18.10s/it]Loading weights:  25%|██▌       | 73/291 [32:02<1:12:11, 19.87s/it]Loading weights:  25%|██▌       | 74/291 [32:24<1:14:15, 20.53s/it]Loading weights:  26%|██▌       | 76/291 [33:05<1:14:04, 20.67s/it]Loading weights:  26%|██▋       | 77/291 [33:47<1:31:53, 25.77s/it]Loading weights:  27%|██▋       | 78/291 [34:27<1:45:21, 29.68s/it]Loading weights:  27%|██▋       | 80/291 [34:50<1:17:00, 21.90s/it]Loading weights:  28%|██▊       | 81/291 [35:14<1:17:54, 22.26s/it]Loading weights:  28%|██▊       | 82/291 [35:26<1:08:54, 19.78s/it]Loading weights:  29%|██▊       | 83/291 [35:40<1:03:00, 18.18s/it]Loading weights:  29%|██▉       | 84/291 [35:40<45:55, 13.31s/it]  Loading weights:  29%|██▉       | 85/291 [36:27<1:17:37, 22.61s/it]Loading weights:  30%|██▉       | 86/291 [37:24<1:51:01, 32.50s/it]Loading weights:  30%|██▉       | 87/291 [38:10<2:03:51, 36.43s/it]Loading weights:  30%|███       | 88/291 [38:10<1:27:29, 25.86s/it]Loading weights:  31%|███       | 89/291 [38:25<1:15:54, 22.55s/it]Loading weights:  31%|███       | 90/291 [38:33<1:01:39, 18.40s/it]Loading weights:  31%|███▏      | 91/291 [38:58<1:07:20, 20.20s/it]Loading weights:  32%|███▏      | 92/291 [39:22<1:10:36, 21.29s/it]Loading weights:  32%|███▏      | 93/291 [39:22<49:37, 15.04s/it]  Loading weights:  32%|███▏      | 94/291 [40:00<1:11:54, 21.90s/it]Loading weights:  33%|███▎      | 95/291 [40:41<1:29:57, 27.54s/it]Loading weights:  33%|███▎      | 96/291 [41:31<1:51:54, 34.43s/it]Loading weights:  34%|███▎      | 98/291 [41:45<1:09:54, 21.73s/it]Loading weights:  34%|███▍      | 99/291 [42:09<1:11:06, 22.22s/it]Loading weights:  34%|███▍      | 100/291 [42:36<1:14:28, 23.40s/it]Loading weights:  35%|███▌      | 103/291 [43:36<1:07:49, 21.64s/it]Loading weights:  36%|███▌      | 104/291 [44:16<1:19:04, 25.37s/it]Loading weights:  36%|███▌      | 105/291 [44:58<1:30:03, 29.05s/it]Loading weights:  36%|███▋      | 106/291 [44:58<1:08:11, 22.12s/it]Loading weights:  37%|███▋      | 107/291 [45:22<1:08:52, 22.46s/it]Loading weights:  37%|███▋      | 108/291 [45:43<1:07:18, 22.07s/it]Loading weights:  37%|███▋      | 109/291 [46:09<1:10:56, 23.39s/it]Loading weights:  38%|███▊      | 112/291 [46:49<53:16, 17.86s/it]  Loading weights:  39%|███▉      | 113/291 [47:48<1:18:17, 26.39s/it]Loading weights:  39%|███▉      | 114/291 [48:34<1:30:57, 30.83s/it]Loading weights:  40%|███▉      | 115/291 [48:35<1:08:33, 23.37s/it]Loading weights:  40%|███▉      | 116/291 [48:51<1:03:02, 21.61s/it]Loading weights:  40%|████      | 117/291 [48:59<51:35, 17.79s/it]  Loading weights:  41%|████      | 118/291 [49:47<1:15:34, 26.21s/it]Loading weights:  41%|████      | 120/291 [49:47<41:50, 14.68s/it]  Loading weights:  42%|████▏     | 121/291 [50:28<59:30, 21.00s/it]Loading weights:  42%|████▏     | 122/291 [51:13<1:15:57, 26.97s/it]Loading weights:  42%|████▏     | 123/291 [52:00<1:30:58, 32.49s/it]Loading weights:  43%|████▎     | 125/291 [52:20<1:02:48, 22.70s/it]Loading weights:  43%|████▎     | 126/291 [52:43<1:02:46, 22.82s/it]Loading weights:  44%|████▎     | 127/291 [53:01<58:42, 21.48s/it]  Loading weights:  44%|████▍     | 128/291 [53:10<49:40, 18.29s/it]Loading weights:  45%|████▍     | 130/291 [54:03<58:36, 21.84s/it]Loading weights:  45%|████▌     | 131/291 [54:56<1:17:28, 29.05s/it]Loading weights:  45%|████▌     | 132/291 [55:40<1:27:03, 32.85s/it]Loading weights:  46%|████▌     | 134/291 [56:03<1:02:56, 24.05s/it]Loading weights:  46%|████▋     | 135/291 [56:09<51:35, 19.84s/it]  Loading weights:  47%|████▋     | 136/291 [56:29<51:12, 19.82s/it]Loading weights:  47%|████▋     | 137/291 [56:53<53:39, 20.91s/it]Loading weights:  48%|████▊     | 139/291 [57:37<54:06, 21.36s/it]Loading weights:  48%|████▊     | 140/291 [58:26<1:09:57, 27.80s/it]Loading weights:  48%|████▊     | 141/291 [59:26<1:29:36, 35.84s/it]Loading weights:  49%|████▉     | 143/291 [59:32<54:40, 22.16s/it]  Loading weights:  49%|████▉     | 144/291 [59:55<54:57, 22.43s/it]Loading weights:  50%|████▉     | 145/291 [1:00:22<57:31, 23.64s/it]Loading weights:  50%|█████     | 146/291 [1:00:33<49:02, 20.30s/it]Loading weights:  51%|█████     | 148/291 [1:01:30<56:26, 23.68s/it]Loading weights:  51%|█████     | 149/291 [1:02:14<1:07:33, 28.54s/it]Loading weights:  52%|█████▏    | 150/291 [1:02:59<1:16:46, 32.67s/it]Loading weights:  52%|█████▏    | 152/291 [1:03:23<55:24, 23.92s/it]  Loading weights:  53%|█████▎    | 153/291 [1:03:44<53:31, 23.27s/it]Loading weights:  53%|█████▎    | 154/291 [1:03:48<42:38, 18.67s/it]Loading weights:  53%|█████▎    | 155/291 [1:04:12<45:17, 19.98s/it]Loading weights:  54%|█████▎    | 156/291 [1:04:12<32:58, 14.66s/it]Loading weights:  54%|█████▍    | 157/291 [1:04:54<49:30, 22.17s/it]Loading weights:  54%|█████▍    | 158/291 [1:05:51<1:10:57, 32.02s/it]Loading weights:  55%|█████▍    | 159/291 [1:06:42<1:22:40, 37.58s/it]Loading weights:  55%|█████▌    | 161/291 [1:06:54<50:35, 23.35s/it]  Loading weights:  56%|█████▌    | 162/291 [1:07:32<57:48, 26.88s/it]Loading weights:  56%|█████▋    | 164/291 [1:07:56<43:48, 20.70s/it]Loading weights:  57%|█████▋    | 166/291 [1:08:38<43:27, 20.86s/it]Loading weights:  57%|█████▋    | 167/291 [1:09:21<52:35, 25.45s/it]Loading weights:  58%|█████▊    | 168/291 [1:10:05<1:01:13, 29.87s/it]Loading weights:  58%|█████▊    | 170/291 [1:10:27<44:57, 22.29s/it]  Loading weights:  59%|█████▉    | 171/291 [1:10:50<45:05, 22.55s/it]Loading weights:  59%|█████▉    | 172/291 [1:11:17<46:40, 23.53s/it]Loading weights:  60%|██████    | 175/291 [1:12:12<40:16, 20.83s/it]Loading weights:  60%|██████    | 176/291 [1:13:01<50:44, 26.48s/it]Loading weights:  61%|██████    | 177/291 [1:13:42<56:11, 29.58s/it]Loading weights:  61%|██████    | 178/291 [1:13:43<42:39, 22.65s/it]Loading weights:  62%|██████▏   | 179/291 [1:14:06<42:27, 22.74s/it]Loading weights:  62%|██████▏   | 180/291 [1:14:20<37:57, 20.52s/it]Loading weights:  62%|██████▏   | 181/291 [1:14:30<32:24, 17.67s/it]Loading weights:  63%|██████▎   | 182/291 [1:14:54<35:14, 19.40s/it]Loading weights:  63%|██████▎   | 183/291 [1:14:54<25:06, 13.95s/it]Loading weights:  63%|██████▎   | 184/291 [1:15:35<38:48, 21.76s/it]Loading weights:  64%|██████▎   | 185/291 [1:16:25<52:50, 29.91s/it]Loading weights:  64%|██████▍   | 186/291 [1:17:22<1:06:23, 37.94s/it]Loading weights:  64%|██████▍   | 187/291 [1:17:22<46:25, 26.79s/it]  Loading weights:  65%|██████▍   | 188/291 [1:17:29<35:48, 20.86s/it]Loading weights:  65%|██████▍   | 189/291 [1:17:45<33:06, 19.48s/it]Loading weights:  65%|██████▌   | 190/291 [1:18:10<35:14, 20.94s/it]Loading weights:  66%|██████▌   | 191/291 [1:18:34<36:26, 21.87s/it]Loading weights:  66%|██████▌   | 192/291 [1:18:34<25:26, 15.42s/it]Loading weights:  66%|██████▋   | 193/291 [1:19:15<37:44, 23.11s/it]Loading weights:  67%|██████▋   | 194/291 [1:19:44<40:24, 24.99s/it]Loading weights:  67%|██████▋   | 195/291 [1:20:44<56:36, 35.39s/it]Loading weights:  68%|██████▊   | 197/291 [1:20:47<30:57, 19.76s/it]Loading weights:  68%|██████▊   | 198/291 [1:21:01<28:17, 18.25s/it]Loading weights:  68%|██████▊   | 199/291 [1:21:25<30:23, 19.82s/it]Loading weights:  69%|██████▊   | 200/291 [1:21:49<31:48, 20.97s/it]Loading weights:  69%|██████▉   | 202/291 [1:22:32<31:19, 21.12s/it]Loading weights:  70%|██████▉   | 203/291 [1:23:15<38:38, 26.34s/it]Loading weights:  70%|███████   | 204/291 [1:23:59<44:55, 30.98s/it]Loading weights:  71%|███████   | 206/291 [1:24:21<31:52, 22.50s/it]Loading weights:  71%|███████   | 207/291 [1:24:45<31:56, 22.81s/it]Loading weights:  71%|███████▏  | 208/291 [1:25:04<30:26, 22.01s/it]Loading weights:  72%|███████▏  | 210/291 [1:25:05<17:30, 12.97s/it]Loading weights:  73%|███████▎  | 211/291 [1:26:06<32:00, 24.01s/it]Loading weights:  73%|███████▎  | 212/291 [1:26:41<34:59, 26.58s/it]Loading weights:  73%|███████▎  | 213/291 [1:27:23<39:49, 30.64s/it]Loading weights:  74%|███████▍  | 215/291 [1:27:46<28:31, 22.52s/it]Loading weights:  74%|███████▍  | 216/291 [1:28:10<28:35, 22.88s/it]Loading weights:  75%|███████▍  | 217/291 [1:28:18<23:42, 19.23s/it]Loading weights:  75%|███████▍  | 218/291 [1:28:37<23:05, 18.97s/it]Loading weights:  75%|███████▌  | 219/291 [1:28:37<16:39, 13.89s/it]Loading weights:  76%|███████▌  | 220/291 [1:29:22<26:57, 22.79s/it]Loading weights:  76%|███████▌  | 221/291 [1:30:22<38:52, 33.32s/it]Loading weights:  76%|███████▋  | 222/291 [1:31:04<41:18, 35.92s/it]Loading weights:  77%|███████▋  | 223/291 [1:31:05<28:56, 25.53s/it]Loading weights:  77%|███████▋  | 224/291 [1:31:29<28:12, 25.26s/it]Loading weights:  77%|███████▋  | 225/291 [1:31:33<20:38, 18.77s/it]Loading weights:  78%|███████▊  | 226/291 [1:31:55<21:31, 19.87s/it]Loading weights:  78%|███████▊  | 227/291 [1:32:20<22:49, 21.39s/it]Loading weights:  78%|███████▊  | 228/291 [1:32:21<15:52, 15.12s/it]Loading weights:  79%|███████▊  | 229/291 [1:33:03<23:55, 23.15s/it]Loading weights:  79%|███████▉  | 230/291 [1:33:48<30:18, 29.81s/it]Loading weights:  79%|███████▉  | 231/291 [1:34:58<41:49, 41.82s/it]Loading weights:  80%|████████  | 233/291 [1:35:01<22:27, 23.23s/it]Loading weights:  80%|████████  | 234/291 [1:35:24<22:08, 23.31s/it]Loading weights:  81%|████████  | 235/291 [1:36:06<26:10, 28.05s/it]Loading weights:  82%|████████▏ | 238/291 [1:36:55<19:15, 21.79s/it]Loading weights:  82%|████████▏ | 239/291 [1:37:36<22:18, 25.74s/it]Loading weights:  82%|████████▏ | 240/291 [1:38:17<24:48, 29.18s/it]Loading weights:  83%|████████▎ | 241/291 [1:38:18<18:30, 22.21s/it]Loading weights:  83%|████████▎ | 242/291 [1:38:41<18:22, 22.50s/it]Loading weights:  84%|████████▎ | 243/291 [1:39:05<18:15, 22.82s/it]Loading weights:  84%|████████▍ | 244/291 [1:39:19<15:57, 20.38s/it]Loading weights:  84%|████████▍ | 245/291 [1:39:30<13:40, 17.83s/it]Loading weights:  85%|████████▍ | 246/291 [1:39:30<09:36, 12.80s/it]Loading weights:  85%|████████▍ | 247/291 [1:40:23<17:57, 24.48s/it]Loading weights:  85%|████████▌ | 248/291 [1:41:15<23:23, 32.65s/it]Loading weights:  86%|████████▌ | 249/291 [1:41:58<24:51, 35.51s/it]Loading weights:  86%|████████▋ | 251/291 [1:42:21<16:25, 24.65s/it]Loading weights:  87%|████████▋ | 252/291 [1:42:32<13:44, 21.15s/it]Loading weights:  87%|████████▋ | 253/291 [1:42:47<12:27, 19.68s/it]Loading weights:  87%|████████▋ | 254/291 [1:43:11<12:49, 20.79s/it]Loading weights:  88%|████████▊ | 255/291 [1:43:11<09:03, 15.09s/it]Loading weights:  88%|████████▊ | 256/291 [1:43:52<13:07, 22.49s/it]Loading weights:  88%|████████▊ | 257/291 [1:44:40<16:55, 29.88s/it]Loading weights:  89%|████████▊ | 258/291 [1:45:39<20:58, 38.14s/it]Loading weights:  89%|████████▉ | 260/291 [1:45:45<11:28, 22.22s/it]Loading weights:  90%|████████▉ | 261/291 [1:46:04<10:42, 21.41s/it]Loading weights:  90%|█████████ | 262/291 [1:46:48<13:09, 27.21s/it]Loading weights:  91%|█████████ | 265/291 [1:47:34<09:07, 21.06s/it]Loading weights:  91%|█████████▏| 266/291 [1:48:17<10:32, 25.32s/it]Loading weights:  92%|█████████▏| 267/291 [1:48:59<11:39, 29.16s/it]Loading weights:  92%|█████████▏| 268/291 [1:48:59<08:30, 22.21s/it]Loading weights:  92%|█████████▏| 269/291 [1:49:23<08:16, 22.55s/it]Loading weights:  93%|█████████▎| 270/291 [1:49:46<07:58, 22.79s/it]Loading weights:  93%|█████████▎| 271/291 [1:50:11<07:47, 23.36s/it]Loading weights:  94%|█████████▍| 273/291 [1:50:12<03:56, 13.12s/it]Loading weights:  94%|█████████▍| 274/291 [1:51:07<06:35, 23.26s/it]Loading weights:  95%|█████████▍| 275/291 [1:51:52<07:39, 28.70s/it]Loading weights:  95%|█████████▍| 276/291 [1:53:21<11:11, 44.79s/it]Loading weights:  96%|█████████▌| 278/291 [1:53:33<06:06, 28.18s/it]Loading weights:  96%|█████████▌| 279/291 [1:54:02<05:40, 28.36s/it]Loading weights:  96%|█████████▌| 280/291 [1:54:35<05:23, 29.45s/it]Loading weights:  97%|█████████▋| 282/291 [1:54:35<02:34, 17.19s/it]Loading weights:  97%|█████████▋| 283/291 [1:55:24<03:16, 24.53s/it]Loading weights:  98%|█████████▊| 284/291 [1:56:07<03:23, 29.04s/it]Loading weights:  98%|█████████▊| 285/291 [1:56:58<03:28, 34.68s/it]Loading weights:  98%|█████████▊| 286/291 [1:56:58<02:06, 25.36s/it]Loading weights:  99%|█████████▊| 287/291 [1:57:19<01:36, 24.11s/it]Loading weights:  99%|█████████▉| 288/291 [1:57:23<00:55, 18.44s/it]Loading weights:  99%|█████████▉| 289/291 [1:57:47<00:40, 20.00s/it]Loading weights: 100%|█████████▉| 290/291 [1:58:12<00:21, 21.36s/it]Loading weights: 100%|██████████| 291/291 [1:58:12<00:00, 24.37s/it]
+2026-09-22 10:23:43 INFO     HTTP Request: HEAD https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-09-22 10:23:50 INFO     HTTP Request: GET https://huggingface.co/meta-llama/Llama-2-7b-chat-hf/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-09-22 10:23:50 INFO     ################################################################################
+2026-09-22 10:23:50 INFO     Constructing few-shot prompt for p_true.
+2026-09-22 10:23:50 INFO     P_TRUE >> Current Question: Question: An app produced with the iPhone SDK can only run on what devices?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:32 INFO     P_TRUE >> Current Response: iPhone, iPad, and iPod touch
+2026-09-22 10:33:32 INFO     P_TRUE >> LOW-T >> true answer:    ['iPod Touch and iPhone']
+2026-09-22 10:33:32 INFO     P_TRUE >> LOW-T >> acc:            1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:32 INFO     P_TRUE >> Current Response: iPhone, iPad, iPod touch
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:33 INFO     P_TRUE >> Current Response: only iPhone, iPad, and iPod touch devices
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:33 INFO     P_TRUE >> Current Response: iPhone, iPad, iPod touch
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:33 INFO     P_TRUE >> Current Response: any iOS device
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:33 INFO     P_TRUE >> Current Response: iPhone, iPad, iPod touch
+2026-09-22 10:33:33 INFO     P_TRUE >> Current Question: Question: What objects are notably bright in near IR?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:34 INFO     P_TRUE >> Current Response: dust, smoke, and pollen
+2026-09-22 10:33:34 INFO     P_TRUE >> LOW-T >> true answer:    ['Leaves']
+2026-09-22 10:33:34 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:34 INFO     P_TRUE >> Current Response: red dwarf stars
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:34 INFO     P_TRUE >> Current Response: warm-blooded animals and plants
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:34 INFO     P_TRUE >> Current Response: LED lights and lasers
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:34 INFO     P_TRUE >> Current Response: white dwarfs
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:35 INFO     P_TRUE >> Current Response: cooler objects such as planets, moons, and comets
+2026-09-22 10:33:35 INFO     P_TRUE >> Current Question: Question: What other contemporaneous school of thought is often confused with Popper's own contributions?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:35 INFO     P_TRUE >> Current Response: logical positivism
+2026-09-22 10:33:35 INFO     P_TRUE >> LOW-T >> true answer:    ['logical positivism']
+2026-09-22 10:33:35 INFO     P_TRUE >> LOW-T >> acc:            1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:35 INFO     P_TRUE >> Current Response: positivism
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:35 INFO     P_TRUE >> Current Response: logical positivism
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:35 INFO     P_TRUE >> Current Response: logical positivism
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: falsificationism.
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: Kuhnian philosophy
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Question: Question: On what continent did the Ottoman Navy contribute most?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: Asia
+2026-09-22 10:33:36 INFO     P_TRUE >> LOW-T >> true answer:    ['European continent']
+2026-09-22 10:33:36 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: Asia
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: Europe
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: Asia
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: Asia
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: Asia
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Question: Question: Who designed the Edificio Panamericano?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:36 INFO     P_TRUE >> Current Response: architect Carlos Ott
+2026-09-22 10:33:36 INFO     P_TRUE >> LOW-T >> true answer:    ['Raul Sichero']
+2026-09-22 10:33:36 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:37 INFO     P_TRUE >> Current Response: architect Carlos Ott
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:37 INFO     P_TRUE >> Current Response: architect, modernist designer, and urban planner, Jose Luis Sert
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:37 INFO     P_TRUE >> Current Response: architect Ricardo Bofill
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:37 INFO     P_TRUE >> Current Response: architect Carlos Ott
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Response: architect Ricardo Bofill
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Question: Question: What is the easternmost river in Punjab?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Response: Ravi River
+2026-09-22 10:33:38 INFO     P_TRUE >> LOW-T >> true answer:    ['Sutlej']
+2026-09-22 10:33:38 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Response: Chenab
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Response: Ravi River
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Response: Ravi River
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Response: Ravi River
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Response: Ravi River
+2026-09-22 10:33:38 INFO     P_TRUE >> Current Question: Question: In what century did Europeans become aware of gunpowder?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:39 INFO     P_TRUE >> Current Response: 13th century
+2026-09-22 10:33:39 INFO     P_TRUE >> LOW-T >> true answer:    ['13th']
+2026-09-22 10:33:39 INFO     P_TRUE >> LOW-T >> acc:            1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:39 INFO     P_TRUE >> Current Response: 13th century
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:39 INFO     P_TRUE >> Current Response: 12th
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:39 INFO     P_TRUE >> Current Response: 12th century
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:39 INFO     P_TRUE >> Current Response: 13th century
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Response: 13th
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Question: Question: What awards ceremony did Kanye not receive any nominations for after the MTV controversy?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Response: Grammy Awards
+2026-09-22 10:33:40 INFO     P_TRUE >> LOW-T >> true answer:    ['52nd Grammy Awards']
+2026-09-22 10:33:40 INFO     P_TRUE >> LOW-T >> acc:            1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Response: Grammy Awards
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Response: Grammy Awards
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Response: Grammy Awards
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Response: the Grammy Awards
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Response: the Grammy Awards
+2026-09-22 10:33:40 INFO     P_TRUE >> Current Question: Question: What is the total number of completed dams located on Cyprus?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:41 INFO     P_TRUE >> Current Response: 17
+2026-09-22 10:33:41 INFO     P_TRUE >> LOW-T >> true answer:    ['107']
+2026-09-22 10:33:41 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:41 INFO     P_TRUE >> Current Response: 14 dams
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:41 INFO     P_TRUE >> Current Response: 18 dams
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:41 INFO     P_TRUE >> Current Response: 13
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:41 INFO     P_TRUE >> Current Response: 25 dams
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:41 INFO     P_TRUE >> Current Response: 65 dams
+2026-09-22 10:33:41 INFO     P_TRUE >> Current Question: Question: What battle between Timur and the Ottoman empire took place in 1402?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:42 INFO     P_TRUE >> Current Response: Battle of Ankara
+2026-09-22 10:33:42 INFO     P_TRUE >> LOW-T >> true answer:    ['Battle of Ankara']
+2026-09-22 10:33:42 INFO     P_TRUE >> LOW-T >> acc:            1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:42 INFO     P_TRUE >> Current Response: Battle of Ankara
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:42 INFO     P_TRUE >> Current Response: battle of Ankara
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:42 INFO     P_TRUE >> Current Response: Battle of Ankara
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:42 INFO     P_TRUE >> Current Response: Battle of Ankara
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:43 INFO     P_TRUE >> Current Response: Battle of Ankara
+2026-09-22 10:33:43 INFO     P_TRUE >> Current Question: Question: How many submissions does the initiative have?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:43 INFO     P_TRUE >> Current Response: 100
+2026-09-22 10:33:43 INFO     P_TRUE >> LOW-T >> true answer:    ['over 3,000']
+2026-09-22 10:33:43 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:43 INFO     P_TRUE >> Current Response: 170
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:43 INFO     P_TRUE >> Current Response: 32
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:43 INFO     P_TRUE >> Current Response: more than 200
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:43 INFO     P_TRUE >> Current Response: 70
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:44 INFO     P_TRUE >> Current Response: 55,000
+2026-09-22 10:33:44 INFO     P_TRUE >> Current Question: Question: When was Mat Hoffman Action Sports Park considered one of the best by National Geographic Society?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:44 INFO     P_TRUE >> Current Response: 1999
+2026-09-22 10:33:44 INFO     P_TRUE >> LOW-T >> true answer:    ['March 2009']
+2026-09-22 10:33:44 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:44 INFO     P_TRUE >> Current Response: 1999
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:44 INFO     P_TRUE >> Current Response: 1999
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:44 INFO     P_TRUE >> Current Response: 1999
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:45 INFO     P_TRUE >> Current Response: 1999
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:45 INFO     P_TRUE >> Current Response: 1999
+2026-09-22 10:33:45 INFO     P_TRUE >> Current Question: Question: The Super NES had how many pins in its proprietary connector?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:45 INFO     P_TRUE >> Current Response: 72
+2026-09-22 10:33:45 INFO     P_TRUE >> LOW-T >> true answer:    ['12']
+2026-09-22 10:33:45 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:45 INFO     P_TRUE >> Current Response: 7
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:45 INFO     P_TRUE >> Current Response: 7
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:45 INFO     P_TRUE >> Current Response: 15 pins
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:45 INFO     P_TRUE >> Current Response: 7
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:33:46 INFO     P_TRUE >> Current Response: 7
+2026-09-22 10:33:46 INFO     P_TRUE >> Current Question: Question: When was the Treaty of Paris signed?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:20 INFO     P_TRUE >> Current Response: 1783
+2026-09-22 10:34:20 INFO     P_TRUE >> LOW-T >> true answer:    ['30 March 1856']
+2026-09-22 10:34:20 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:21 INFO     P_TRUE >> Current Response: 1783
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:21 INFO     P_TRUE >> Current Response: 1783
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:21 INFO     P_TRUE >> Current Response: 1783
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:21 INFO     P_TRUE >> Current Response: 1783
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:21 INFO     P_TRUE >> Current Response: 1783
+2026-09-22 10:34:21 INFO     P_TRUE >> Current Question: Question: What year did season ten of American Idol first air?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:22 INFO     P_TRUE >> Current Response: 2009
+2026-09-22 10:34:22 INFO     P_TRUE >> LOW-T >> true answer:    ['2011']
+2026-09-22 10:34:22 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:22 INFO     P_TRUE >> Current Response: 2011
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:22 INFO     P_TRUE >> Current Response: 2009
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:22 INFO     P_TRUE >> Current Response: 2011
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:22 INFO     P_TRUE >> Current Response: 2009
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:23 INFO     P_TRUE >> Current Response: 2009
+2026-09-22 10:34:23 INFO     P_TRUE >> Current Question: Question: When does "Movement" occur?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:23 INFO     P_TRUE >> Current Response: when a planet is at its farthest point from the Sun in its orbit.
+2026-09-22 10:34:23 INFO     P_TRUE >> LOW-T >> true answer:    ['Memorial Day Weekend']
+2026-09-22 10:34:23 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:23 INFO     P_TRUE >> Current Response: During meiosis
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:24 INFO     P_TRUE >> Current Response: When water moves from higher elevation to lower elevation.
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:24 INFO     P_TRUE >> Current Response: in 1971 when President Nixon discontinued the direct convertibility of the US dollar to gold
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:25 INFO     P_TRUE >> Current Response: when a planet is at its farthest point from the sun.
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:25 INFO     P_TRUE >> Current Response: When the Earth rotates from west to east
+2026-09-22 10:34:25 INFO     P_TRUE >> Current Question: Question: Where is the medieval St. Bartholomew Chapel located?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:25 INFO     P_TRUE >> Current Response: Paris
+2026-09-22 10:34:25 INFO     P_TRUE >> LOW-T >> true answer:    ['Germany']
+2026-09-22 10:34:25 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:25 INFO     P_TRUE >> Current Response: Paris, France
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:26 INFO     P_TRUE >> Current Response: the Palace of Westminster in London
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:26 INFO     P_TRUE >> Current Response: Paris, France
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:26 INFO     P_TRUE >> Current Response: Paris
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:26 INFO     P_TRUE >> Current Response: France
+2026-09-22 10:34:26 INFO     P_TRUE >> Current Question: Question: The winners of World War II along with France were allotted permanent seats for what organization?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:26 INFO     P_TRUE >> Current Response: United Nations Security Council
+2026-09-22 10:34:26 INFO     P_TRUE >> LOW-T >> true answer:    ['United Nations Security Council']
+2026-09-22 10:34:26 INFO     P_TRUE >> LOW-T >> acc:            1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:26 INFO     P_TRUE >> Current Response: United Nations Security Council
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:26 INFO     P_TRUE >> Current Response: United Nations Security Council
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:27 INFO     P_TRUE >> Current Response: United Nations Security Council
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:27 INFO     P_TRUE >> Current Response: United Nations Security Council
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:27 INFO     P_TRUE >> Current Response: United Nations
+2026-09-22 10:34:27 INFO     P_TRUE >> Current Question: Question: What can citizens use to challenge any law passed by Parliament?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:27 INFO     P_TRUE >> Current Response: judicial review
+2026-09-22 10:34:27 INFO     P_TRUE >> LOW-T >> true answer:    ['referendums']
+2026-09-22 10:34:27 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:27 INFO     P_TRUE >> Current Response: The House of Lords
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:27 INFO     P_TRUE >> Current Response: Joint Committee on Statutory Instruments
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:28 INFO     P_TRUE >> Current Response: referendum
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:28 INFO     P_TRUE >> Current Response: the High Court of Parliament
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:28 INFO     P_TRUE >> Current Response: Judicial Review
+2026-09-22 10:34:28 INFO     P_TRUE >> Current Question: Question: In which year did the AAUP release their study?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:28 INFO     P_TRUE >> Current Response: 1915
+2026-09-22 10:34:28 INFO     P_TRUE >> LOW-T >> true answer:    ['2000']
+2026-09-22 10:34:28 INFO     P_TRUE >> LOW-T >> acc:            0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:28 INFO     P_TRUE >> Current Response: 1994
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:28 INFO     P_TRUE >> Current Response: 1987
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:29 INFO     P_TRUE >> Current Response: 1969
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:29 INFO     P_TRUE >> Current Response: 1967
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:29 INFO     P_TRUE >> Current Response: 1915
+2026-09-22 10:34:29 INFO     Finished constructing few-shot prompt for p_true.
+2026-09-22 10:34:29 INFO     ################################################################################
+2026-09-22 10:34:29 INFO     p_true_few_shot_prompt: Question: An app produced with the iPhone SDK can only run on what devices?
+Brainstormed Answers: iPhone, iPad, and iPod touch 
+iPhone, iPad, iPod touch 
+only iPhone, iPad, and iPod touch devices 
+iPhone, iPad, iPod touch 
+any iOS device 
+iPhone, iPad, iPod touch 
+Possible answer: iPhone, iPad, and iPod touch
+Is the possible answer:
+A) True
+B) False
+The possible answer is: A
+Question: What objects are notably bright in near IR?
+Brainstormed Answers: dust, smoke, and pollen 
+red dwarf stars 
+warm-blooded animals and plants 
+LED lights and lasers 
+white dwarfs 
+cooler objects such as planets, moons, and comets 
+Possible answer: dust, smoke, and pollen
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: What other contemporaneous school of thought is often confused with Popper's own contributions?
+Brainstormed Answers: logical positivism 
+positivism 
+logical positivism 
+logical positivism 
+falsificationism. 
+Kuhnian philosophy 
+Possible answer: logical positivism
+Is the possible answer:
+A) True
+B) False
+The possible answer is: A
+Question: On what continent did the Ottoman Navy contribute most?
+Brainstormed Answers: Asia 
+Asia 
+Europe 
+Asia 
+Asia 
+Asia 
+Possible answer: Asia
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: Who designed the Edificio Panamericano?
+Brainstormed Answers: architect Carlos Ott 
+architect Carlos Ott 
+architect, modernist designer, and urban planner, Jose Luis Sert 
+architect Ricardo Bofill 
+architect Carlos Ott 
+architect Ricardo Bofill 
+Possible answer: architect Carlos Ott
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: What is the easternmost river in Punjab?
+Brainstormed Answers: Ravi River 
+Chenab 
+Ravi River 
+Ravi River 
+Ravi River 
+Ravi River 
+Possible answer: Ravi River
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: In what century did Europeans become aware of gunpowder?
+Brainstormed Answers: 13th century 
+13th century 
+12th 
+12th century 
+13th century 
+13th 
+Possible answer: 13th century
+Is the possible answer:
+A) True
+B) False
+The possible answer is: A
+Question: What awards ceremony did Kanye not receive any nominations for after the MTV controversy?
+Brainstormed Answers: Grammy Awards 
+Grammy Awards 
+Grammy Awards 
+Grammy Awards 
+the Grammy Awards 
+the Grammy Awards 
+Possible answer: Grammy Awards
+Is the possible answer:
+A) True
+B) False
+The possible answer is: A
+Question: What is the total number of completed dams located on Cyprus?
+Brainstormed Answers: 17 
+14 dams 
+18 dams 
+13 
+25 dams 
+65 dams 
+Possible answer: 17
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: What battle between Timur and the Ottoman empire took place in 1402?
+Brainstormed Answers: Battle of Ankara 
+Battle of Ankara 
+battle of Ankara 
+Battle of Ankara 
+Battle of Ankara 
+Battle of Ankara 
+Possible answer: Battle of Ankara
+Is the possible answer:
+A) True
+B) False
+The possible answer is: A
+Question: How many submissions does the initiative have?
+Brainstormed Answers: 100 
+170 
+32 
+more than 200 
+70 
+55,000 
+Possible answer: 100
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: When was Mat Hoffman Action Sports Park considered one of the best by National Geographic Society?
+Brainstormed Answers: 1999 
+1999 
+1999 
+1999 
+1999 
+1999 
+Possible answer: 1999
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: The Super NES had how many pins in its proprietary connector?
+Brainstormed Answers: 72 
+7 
+7 
+15 pins 
+7 
+7 
+Possible answer: 72
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: When was the Treaty of Paris signed?
+Brainstormed Answers: 1783 
+1783 
+1783 
+1783 
+1783 
+1783 
+Possible answer: 1783
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: What year did season ten of American Idol first air?
+Brainstormed Answers: 2009 
+2011 
+2009 
+2011 
+2009 
+2009 
+Possible answer: 2009
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: When does "Movement" occur?
+Brainstormed Answers: when a planet is at its farthest point from the Sun in its orbit. 
+During meiosis 
+When water moves from higher elevation to lower elevation. 
+in 1971 when President Nixon discontinued the direct convertibility of the US dollar to gold 
+when a planet is at its farthest point from the sun. 
+When the Earth rotates from west to east 
+Possible answer: when a planet is at its farthest point from the Sun in its orbit.
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: Where is the medieval St. Bartholomew Chapel located?
+Brainstormed Answers: Paris 
+Paris, France 
+the Palace of Westminster in London 
+Paris, France 
+Paris 
+France 
+Possible answer: Paris
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: The winners of World War II along with France were allotted permanent seats for what organization?
+Brainstormed Answers: United Nations Security Council 
+United Nations Security Council 
+United Nations Security Council 
+United Nations Security Council 
+United Nations Security Council 
+United Nations 
+Possible answer: United Nations Security Council
+Is the possible answer:
+A) True
+B) False
+The possible answer is: A
+Question: What can citizens use to challenge any law passed by Parliament?
+Brainstormed Answers: judicial review 
+The House of Lords 
+Joint Committee on Statutory Instruments 
+referendum 
+the High Court of Parliament 
+Judicial Review 
+Possible answer: judicial review
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+Question: In which year did the AAUP release their study?
+Brainstormed Answers: 1915 
+1994 
+1987 
+1969 
+1967 
+1915 
+Possible answer: 1915
+Is the possible answer:
+A) True
+B) False
+The possible answer is: B
+2026-09-22 10:34:29 INFO     ################################################################################
+2026-09-22 10:34:29 INFO     ================================================================================
+2026-09-22 10:34:29 INFO     Generating answers: 
+2026-09-22 10:34:29 INFO     ================================================================================
+2026-09-22 10:34:29 INFO     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2026-09-22 10:34:29 INFO     Starting with dataset_split train.
+2026-09-22 10:34:29 INFO     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  0%|          | 0/20 [00:00<?, ?it/s]2026-09-22 10:34:29 INFO     Current input: Question: From the 2011 census, London is second in population in the EU to which city?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:29 INFO     Iteration 1:  ################################################################################
+2026-09-22 10:34:29 INFO     question:      From the 2011 census, London is second in population in the EU to which city?
+2026-09-22 10:34:29 INFO     low-t prediction: Berlin
+2026-09-22 10:34:29 INFO     correct answer: ['Paris']
+2026-09-22 10:34:29 INFO     accuracy:      0.0
+2026-09-22 10:34:29 INFO     Current input: Question: What did Lodygin use as a burner in his lamp?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:29 INFO     Iteration 2:  ################################################################################
+2026-09-22 10:34:29 INFO     question:      What did Lodygin use as a burner in his lamp?
+2026-09-22 10:34:29 INFO     low-t prediction: a piece of coal
+2026-09-22 10:34:29 INFO     correct answer: ['two carbon rods']
+2026-09-22 10:34:29 INFO     accuracy:      0.0
+ 10%|█         | 2/20 [00:00<00:02,  8.99it/s]2026-09-22 10:34:29 INFO     Current input: Question: Exposure to what natural element was necessary for early photographic plates?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:29 INFO     Iteration 3:  ################################################################################
+2026-09-22 10:34:29 INFO     question:      Exposure to what natural element was necessary for early photographic plates?
+2026-09-22 10:34:29 INFO     low-t prediction: silver nitrate
+2026-09-22 10:34:29 INFO     correct answer: ['light']
+2026-09-22 10:34:29 INFO     accuracy:      0.0
+ 15%|█▌        | 3/20 [00:00<00:02,  7.99it/s]2026-09-22 10:34:29 INFO     Current input: Question: Where did Pakistan try to remove the Taliban and Al-Qaeda?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:30 INFO     Iteration 4:  ################################################################################
+2026-09-22 10:34:30 INFO     question:      Where did Pakistan try to remove the Taliban and Al-Qaeda?
+2026-09-22 10:34:30 INFO     low-t prediction: Waziristan
+2026-09-22 10:34:30 INFO     correct answer: ['northern tribal areas']
+2026-09-22 10:34:30 INFO     accuracy:      0.0
+ 20%|██        | 4/20 [00:00<00:02,  6.86it/s]2026-09-22 10:34:30 INFO     Current input: Question: Example psychoacoustic models and rate loops can be foundin which part of the original standard?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:30 INFO     Iteration 5:  ################################################################################
+2026-09-22 10:34:30 INFO     question:      Example psychoacoustic models and rate loops can be foundin which part of the original standard?
+2026-09-22 10:34:30 INFO     low-t prediction: ANSI/HFES 50
+2026-09-22 10:34:30 INFO     correct answer: ['non-normative']
+2026-09-22 10:34:30 INFO     accuracy:      0.0
+ 25%|██▌       | 5/20 [00:00<00:03,  4.80it/s]2026-09-22 10:34:30 INFO     Current input: Question: Which boroughs was the Mexico City borough split into?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:30 INFO     Iteration 6:  ################################################################################
+2026-09-22 10:34:30 INFO     question:      Which boroughs was the Mexico City borough split into?
+2026-09-22 10:34:30 INFO     low-t prediction: 16
+2026-09-22 10:34:30 INFO     correct answer: ['Cuauhtémoc, Miguel Hidalgo, Venustiano Carranza and Benito Juárez']
+2026-09-22 10:34:30 INFO     accuracy:      0.0
+ 30%|███       | 6/20 [00:00<00:02,  5.55it/s]2026-09-22 10:34:30 INFO     Current input: Question: In what direction out of Kathmandu did the Khas originate from?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:30 INFO     Iteration 7:  ################################################################################
+2026-09-22 10:34:30 INFO     question:      In what direction out of Kathmandu did the Khas originate from?
+2026-09-22 10:34:30 INFO     low-t prediction: east
+2026-09-22 10:34:30 INFO     correct answer: ['west']
+2026-09-22 10:34:30 INFO     accuracy:      0.0
+2026-09-22 10:34:30 INFO     Current input: Question: Where was the Russian Bomarsund fortress at?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:30 INFO     Iteration 8:  ################################################################################
+2026-09-22 10:34:30 INFO     question:      Where was the Russian Bomarsund fortress at?
+2026-09-22 10:34:30 INFO     low-t prediction: the Aland Islands
+2026-09-22 10:34:30 INFO     correct answer: ['Åland Islands']
+2026-09-22 10:34:30 INFO     accuracy:      1.0
+ 40%|████      | 8/20 [00:01<00:01,  6.48it/s]2026-09-22 10:34:30 INFO     Current input: Question: What did not exist at the time during which Micronesians arrived at the Marshall Islands?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:30 INFO     Iteration 9:  ################################################################################
+2026-09-22 10:34:30 INFO     question:      What did not exist at the time during which Micronesians arrived at the Marshall Islands?
+2026-09-22 10:34:30 INFO     low-t prediction: electricity
+2026-09-22 10:34:30 INFO     correct answer: ['historical or oral records']
+2026-09-22 10:34:30 INFO     accuracy:      0.0
+2026-09-22 10:34:30 INFO     Current input: Question: How was the definition of terrorism expanded by the Patriot Act?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:31 INFO     Iteration 10:  ################################################################################
+2026-09-22 10:34:31 INFO     question:      How was the definition of terrorism expanded by the Patriot Act?
+2026-09-22 10:34:31 INFO     low-t prediction: by including domestic terrorism
+2026-09-22 10:34:31 INFO     correct answer: ['to include domestic terrorism']
+2026-09-22 10:34:31 INFO     accuracy:      1.0
+ 50%|█████     | 10/20 [00:01<00:01,  6.47it/s]2026-09-22 10:34:31 INFO     Current input: Question: In what year did Nicolae Ceausescu visit the UK?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:31 INFO     Iteration 11:  ################################################################################
+2026-09-22 10:34:31 INFO     question:      In what year did Nicolae Ceausescu visit the UK?
+2026-09-22 10:34:31 INFO     low-t prediction: 1978
+2026-09-22 10:34:31 INFO     correct answer: ['1978']
+2026-09-22 10:34:31 INFO     accuracy:      1.0
+ 55%|█████▌    | 11/20 [00:01<00:01,  6.17it/s]2026-09-22 10:34:31 INFO     Current input: Question: John XXIII continued the gradual reform of what?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:31 INFO     Iteration 12:  ################################################################################
+2026-09-22 10:34:31 INFO     question:      John XXIII continued the gradual reform of what?
+2026-09-22 10:34:31 INFO     low-t prediction: Catholic Church
+2026-09-22 10:34:31 INFO     correct answer: ['the Roman liturgy']
+2026-09-22 10:34:31 INFO     accuracy:      0.0
+2026-09-22 10:34:31 INFO     Current input: Question: The Norman kingdomwas in what italian city state?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:31 INFO     Iteration 13:  ################################################################################
+2026-09-22 10:34:31 INFO     question:      The Norman kingdomwas in what italian city state?
+2026-09-22 10:34:31 INFO     low-t prediction: southern Italy
+2026-09-22 10:34:31 INFO     correct answer: ['Sicily']
+2026-09-22 10:34:31 INFO     accuracy:      0.0
+ 65%|██████▌   | 13/20 [00:01<00:00,  7.30it/s]2026-09-22 10:34:31 INFO     Current input: Question: What book did Ibn al-Haytham write?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:31 INFO     Iteration 14:  ################################################################################
+2026-09-22 10:34:31 INFO     question:      What book did Ibn al-Haytham write?
+2026-09-22 10:34:31 INFO     low-t prediction: Kitab al-Manazir
+2026-09-22 10:34:31 INFO     correct answer: ['Book of Optics']
+2026-09-22 10:34:31 INFO     accuracy:      0.0
+ 70%|███████   | 14/20 [00:02<00:00,  6.26it/s]2026-09-22 10:34:31 INFO     Current input: Question: What was the name of the song that Kris Allen and Adam Lamber released after American Idol?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:31 INFO     Iteration 15:  ################################################################################
+2026-09-22 10:34:31 INFO     question:      What was the name of the song that Kris Allen and Adam Lamber released after American Idol?
+2026-09-22 10:34:31 INFO     low-t prediction: No Boundaries
+2026-09-22 10:34:31 INFO     correct answer: ['No Boundaries']
+2026-09-22 10:34:31 INFO     accuracy:      1.0
+ 75%|███████▌  | 15/20 [00:02<00:00,  5.99it/s]2026-09-22 10:34:31 INFO     Current input: Question: In which educational system was Whitehead employed in the late 1910s?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:32 INFO     Iteration 16:  ################################################################################
+2026-09-22 10:34:32 INFO     question:      In which educational system was Whitehead employed in the late 1910s?
+2026-09-22 10:34:32 INFO     low-t prediction: Cambridge University
+2026-09-22 10:34:32 INFO     correct answer: ['University of London system']
+2026-09-22 10:34:32 INFO     accuracy:      0.0
+ 80%|████████  | 16/20 [00:02<00:00,  6.55it/s]2026-09-22 10:34:32 INFO     Current input: Question: Who called Beyonce the World's most Beautiful Woman?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:32 INFO     Iteration 17:  ################################################################################
+2026-09-22 10:34:32 INFO     question:      Who called Beyonce the World's most Beautiful Woman?
+2026-09-22 10:34:32 INFO     low-t prediction: People magazine
+2026-09-22 10:34:32 INFO     correct answer: ['People']
+2026-09-22 10:34:32 INFO     accuracy:      1.0
+2026-09-22 10:34:32 INFO     Current input: Question: What does the acroynm ELF stand for?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:32 INFO     Iteration 18:  ################################################################################
+2026-09-22 10:34:32 INFO     question:      What does the acroynm ELF stand for?
+2026-09-22 10:34:32 INFO     low-t prediction: Extremely Low Frequency
+2026-09-22 10:34:32 INFO     correct answer: ['Eritrean Liberation Front']
+2026-09-22 10:34:32 INFO     accuracy:      0.0
+ 90%|█████████ | 18/20 [00:02<00:00,  6.60it/s]2026-09-22 10:34:32 INFO     Current input: Question: Along with pink eye and influenza, what other health issue was caused by the drought?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:32 INFO     Iteration 19:  ################################################################################
+2026-09-22 10:34:32 INFO     question:      Along with pink eye and influenza, what other health issue was caused by the drought?
+2026-09-22 10:34:32 INFO     low-t prediction: cholera
+2026-09-22 10:34:32 INFO     correct answer: ['diarrhea']
+2026-09-22 10:34:32 INFO     accuracy:      0.0
+ 95%|█████████▌| 19/20 [00:02<00:00,  6.77it/s]2026-09-22 10:34:32 INFO     Current input: Question: Along with sensory and motor information, what information had to pass through the diencephalon before being processed?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:32 INFO     Iteration 20:  ################################################################################
+2026-09-22 10:34:32 INFO     question:      Along with sensory and motor information, what information had to pass through the diencephalon before being processed?
+2026-09-22 10:34:32 INFO     low-t prediction: emotional information
+2026-09-22 10:34:32 INFO     correct answer: ['physiological']
+2026-09-22 10:34:32 INFO     accuracy:      0.0
+100%|██████████| 20/20 [00:03<00:00,  6.84it/s]100%|██████████| 20/20 [00:03<00:00,  6.53it/s]
+2026-09-22 10:34:41 INFO     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2026-09-22 10:34:41 INFO     Starting with dataset_split validation.
+2026-09-22 10:34:41 INFO     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Overall train split accuracy: 0.25
+  0%|          | 0/20 [00:00<?, ?it/s]2026-09-22 10:34:41 INFO     Current input: Question: The rocks at the Grand Canyon have been in place since when?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:42 INFO     Iteration 1:  ################################################################################
+2026-09-22 10:34:42 INFO     question:      The rocks at the Grand Canyon have been in place since when?
+2026-09-22 10:34:42 INFO     low-t prediction: over 175 million years ago
+2026-09-22 10:34:42 INFO     correct answer: ['Cambrian time', 'Cambrian time', 'Cambrian time']
+2026-09-22 10:34:42 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:42 INFO     high-t prediction 1 : over 650 million years ago
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:42 INFO     high-t prediction 2 : at least 650 million years
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:42 INFO     high-t prediction 3 : millions of years
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:43 INFO     high-t prediction 4 : about 1.8 billion years ago
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:43 INFO     high-t prediction 5 : millions of years ago
+2026-09-22 10:34:52 INFO     p_true: -2.031261444091797
+  5%|▌         | 1/20 [00:10<03:24, 10.74s/it]2026-09-22 10:34:52 INFO     Current input: Question: Which conjecture holds that for any positive integer n, there is an infinite amount of pairs of consecutive primes differing by 2n?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:52 INFO     Iteration 2:  ################################################################################
+2026-09-22 10:34:52 INFO     question:      Which conjecture holds that for any positive integer n, there is an infinite amount of pairs of consecutive primes differing by 2n?
+2026-09-22 10:34:52 INFO     low-t prediction: Goldbach Conjecture
+2026-09-22 10:34:52 INFO     correct answer: ["Polignac's conjecture", "Polignac's", "Polignac's conjecture", "Polignac's"]
+2026-09-22 10:34:52 INFO     accuracy:      1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:53 INFO     high-t prediction 1 : Goldbach's Conjecture
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:53 INFO     high-t prediction 2 : Goldbach Conjecture
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:53 INFO     high-t prediction 3 : Goldbach's Conjecture
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:53 INFO     high-t prediction 4 : Goldbach's Conjecture
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:54 INFO     high-t prediction 5 : Goldbach's Conjecture
+2026-09-22 10:34:54 INFO     p_true: -0.3625713288784027
+ 10%|█         | 2/20 [00:12<01:37,  5.39s/it]2026-09-22 10:34:54 INFO     Current input: Question: What is the Irish term for private schools?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:54 INFO     Iteration 3:  ################################################################################
+2026-09-22 10:34:54 INFO     question:      What is the Irish term for private schools?
+2026-09-22 10:34:54 INFO     low-t prediction: fee-paying schools
+2026-09-22 10:34:54 INFO     correct answer: ['scoil phríobháideach', 'scoil phríobháideach', 'scoil phríobháideach']
+2026-09-22 10:34:54 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:54 INFO     high-t prediction 1 : fee-paying schools
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:54 INFO     high-t prediction 2 : ______________
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:55 INFO     high-t prediction 3 : fee-paying schools
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:55 INFO     high-t prediction 4 : gymnasia
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:55 INFO     high-t prediction 5 : fee-paying schools
+2026-09-22 10:34:55 INFO     p_true: -2.5500597953796387
+ 15%|█▌        | 3/20 [00:13<01:00,  3.57s/it]2026-09-22 10:34:55 INFO     Current input: Question: The inside of a ctenophore is lined with what?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:55 INFO     Iteration 4:  ################################################################################
+2026-09-22 10:34:55 INFO     question:      The inside of a ctenophore is lined with what?
+2026-09-22 10:34:55 INFO     low-t prediction: cilia
+2026-09-22 10:34:55 INFO     correct answer: ['epithelium', 'epithelium', 'epithelium']
+2026-09-22 10:34:55 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:55 INFO     high-t prediction 1 : collagen
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:56 INFO     high-t prediction 2 : collar cells
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:56 INFO     high-t prediction 3 : epithelial cells
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:56 INFO     high-t prediction 4 : epithelial cells
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:56 INFO     high-t prediction 5 : collar cells
+2026-09-22 10:34:56 INFO     p_true: -1.990660309791565
+ 20%|██        | 4/20 [00:14<00:41,  2.62s/it]2026-09-22 10:34:56 INFO     Current input: Question: Which pharmacists are likely to seek additional education following pharmacy school?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:57 INFO     Iteration 5:  ################################################################################
+2026-09-22 10:34:57 INFO     question:      Which pharmacists are likely to seek additional education following pharmacy school?
+2026-09-22 10:34:57 INFO     low-t prediction: those interested in specialized practice areas such as pediatrics, cardiology, and oncology
+2026-09-22 10:34:57 INFO     correct answer: ['pharmacists practicing in hospitals', 'pharmacists practicing in hospitals', 'clinical pharmacists']
+2026-09-22 10:34:57 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:57 INFO     high-t prediction 1 : those who are interested in research and academia
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:58 INFO     high-t prediction 2 : those interested in specializing in a particular area of practice, such as pediatrics or oncology
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:58 INFO     high-t prediction 3 : hospital pharmacists
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:58 INFO     high-t prediction 4 : ambulatory care and hospital pharmacists
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:59 INFO     high-t prediction 5 : hospital pharmacists
+2026-09-22 10:34:59 INFO     p_true: -1.896963357925415
+ 25%|██▌       | 5/20 [00:17<00:39,  2.61s/it]2026-09-22 10:34:59 INFO     Current input: Question: Who was the first Warsaw President?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:59 INFO     Iteration 6:  ################################################################################
+2026-09-22 10:34:59 INFO     question:      Who was the first Warsaw President?
+2026-09-22 10:34:59 INFO     low-t prediction: Lech Walesa
+2026-09-22 10:34:59 INFO     correct answer: ['Jan Andrzej Menich', 'Jan Andrzej Menich', 'Jan Andrzej Menich']
+2026-09-22 10:34:59 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:59 INFO     high-t prediction 1 : Lech Walesa
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:34:59 INFO     high-t prediction 2 : Lech Walesa
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:00 INFO     high-t prediction 3 : Lech Walesa
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:00 INFO     high-t prediction 4 : Gabriel Narutowicz
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:00 INFO     high-t prediction 5 : Lech Walesa
+2026-09-22 10:35:00 INFO     p_true: -1.7399024963378906
+ 30%|███       | 6/20 [00:18<00:30,  2.17s/it]2026-09-22 10:35:00 INFO     Current input: Question: Besides constant flooding, why else was there regulation of the Rhine?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:01 INFO     Iteration 7:  ################################################################################
+2026-09-22 10:35:01 INFO     question:      Besides constant flooding, why else was there regulation of the Rhine?
+2026-09-22 10:35:01 INFO     low-t prediction: to prevent the spread of disease
+2026-09-22 10:35:01 INFO     correct answer: ['strong sedimentation', 'strong sedimentation', 'strong sedimentation in the western Rhine Delta', 'strong sedimentation']
+2026-09-22 10:35:01 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:01 INFO     high-t prediction 1 : to stop excessive water levels in Lake Constance
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:01 INFO     high-t prediction 2 : protect trade routes
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:01 INFO     high-t prediction 3 : to prevent overfishing
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:01 INFO     high-t prediction 4 : trade and commerce
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:01 INFO     high-t prediction 5 : for navigation and trade
+2026-09-22 10:35:02 INFO     p_true: -1.7657407522201538
+ 35%|███▌      | 7/20 [00:20<00:25,  1.94s/it]2026-09-22 10:35:02 INFO     Current input: Question: Roughly how much is the Student Government's budget?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:02 INFO     Iteration 8:  ################################################################################
+2026-09-22 10:35:02 INFO     question:      Roughly how much is the Student Government's budget?
+2026-09-22 10:35:02 INFO     low-t prediction: $100,000
+2026-09-22 10:35:02 INFO     correct answer: ['greater than $2 million', '$2 million', 'greater than $2 million']
+2026-09-22 10:35:02 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:02 INFO     high-t prediction 1 : $1,000,000
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:03 INFO     high-t prediction 2 : 100 million US dollars
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:03 INFO     high-t prediction 3 : $175 million
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:03 INFO     high-t prediction 4 : $1.5 million
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:03 INFO     high-t prediction 5 : $400,000
+2026-09-22 10:35:04 INFO     p_true: -2.044870615005493
+ 40%|████      | 8/20 [00:22<00:22,  1.90s/it]2026-09-22 10:35:04 INFO     Current input: Question: Why would rampant violence prevent people from going to work?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:04 INFO     Iteration 9:  ################################################################################
+2026-09-22 10:35:04 INFO     question:      Why would rampant violence prevent people from going to work?
+2026-09-22 10:35:04 INFO     low-t prediction: curfew
+2026-09-22 10:35:04 INFO     correct answer: ['for fear of their lives', 'fear of their lives', 'fear of their lives']
+2026-09-22 10:35:04 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:04 INFO     high-t prediction 1 : because the country was in a state of civil war
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:04 INFO     high-t prediction 2 : civil war
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:05 INFO     high-t prediction 3 : it was the result of the 1992 Los Angeles riots
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:05 INFO     high-t prediction 4 : curfew
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:05 INFO     high-t prediction 5 : due to civil unrest
+2026-09-22 10:35:05 INFO     p_true: -1.9369163513183594
+ 45%|████▌     | 9/20 [00:23<00:20,  1.83s/it]2026-09-22 10:35:05 INFO     Current input: Question: Who were later Yuan emperors isolated from?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:05 INFO     Iteration 10:  ################################################################################
+2026-09-22 10:35:05 INFO     question:      Who were later Yuan emperors isolated from?
+2026-09-22 10:35:05 INFO     low-t prediction: the rest of China
+2026-09-22 10:35:05 INFO     correct answer: ['both the army and the populace', 'army and the populace', 'the army and the populace']
+2026-09-22 10:35:05 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:06 INFO     high-t prediction 1 : the outside world
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:06 INFO     high-t prediction 2 : Buddhist monks
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:06 INFO     high-t prediction 3 : the outer world
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:06 INFO     high-t prediction 4 : the Mongol Empire
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:06 INFO     high-t prediction 5 : the Tanguts
+2026-09-22 10:35:06 INFO     p_true: -2.099466323852539
+ 50%|█████     | 10/20 [00:25<00:16,  1.63s/it]2026-09-22 10:35:06 INFO     Current input: Question: How many people were registered to receive the HD service prior to launch?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:07 INFO     Iteration 11:  ################################################################################
+2026-09-22 10:35:07 INFO     question:      How many people were registered to receive the HD service prior to launch?
+2026-09-22 10:35:07 INFO     low-t prediction: 10 million
+2026-09-22 10:35:07 INFO     correct answer: ['40,000', '40,000', '40,000']
+2026-09-22 10:35:07 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:07 INFO     high-t prediction 1 : 2.5 million
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:07 INFO     high-t prediction 2 : 2.2 million
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:07 INFO     high-t prediction 3 : 10 million
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:07 INFO     high-t prediction 4 : 15 million
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:08 INFO     high-t prediction 5 : 2.5 million households
+2026-09-22 10:35:08 INFO     p_true: -2.140716552734375
+ 55%|█████▌    | 11/20 [00:26<00:14,  1.56s/it]2026-09-22 10:35:08 INFO     Current input: Question: Whose army liberated Warsaw in 1806?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:08 INFO     Iteration 12:  ################################################################################
+2026-09-22 10:35:08 INFO     question:      Whose army liberated Warsaw in 1806?
+2026-09-22 10:35:08 INFO     low-t prediction: Napoleon's army
+2026-09-22 10:35:08 INFO     correct answer: ["Napoleon's", "Napoleon's", "Napoleon's"]
+2026-09-22 10:35:08 INFO     accuracy:      1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:08 INFO     high-t prediction 1 : Napoleon's army
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:08 INFO     high-t prediction 2 : Napoleon's army
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:09 INFO     high-t prediction 3 : Napoleon Bonaparte's army
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:09 INFO     high-t prediction 4 : Napoleon's army
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:09 INFO     high-t prediction 5 : Napoleon's army
+2026-09-22 10:35:09 INFO     p_true: -1.1797493696212769
+ 60%|██████    | 12/20 [00:27<00:12,  1.50s/it]2026-09-22 10:35:09 INFO     Current input: Question: Why is the seating of the debating chamber arranged as it is?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:10 INFO     Iteration 13:  ################################################################################
+2026-09-22 10:35:10 INFO     question:      Why is the seating of the debating chamber arranged as it is?
+2026-09-22 10:35:10 INFO     low-t prediction: to ensure that the speaker with the most persuasive argument is placed in the best position to address the entire chamber.
+2026-09-22 10:35:10 INFO     correct answer: ['encourage consensus amongst elected members', 'encourage consensus amongst elected members', 'reflects the desire to encourage consensus amongst elected members']
+2026-09-22 10:35:10 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:10 INFO     high-t prediction 1 : so that Members of Parliament can see each other
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:11 INFO     high-t prediction 2 : to ensure that members of parliament with the loudest voices can be heard best
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:11 INFO     high-t prediction 3 : to give each member of parliament an equal view of the Speaker
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:11 INFO     high-t prediction 4 : to facilitate clear and effective communication between MPs
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:12 INFO     high-t prediction 5 : so that members of parliament can see each other's faces.
+2026-09-22 10:35:12 INFO     p_true: -0.6700053811073303
+ 65%|██████▌   | 13/20 [00:30<00:13,  1.96s/it]2026-09-22 10:35:12 INFO     Current input: Question: Which countries use the green Greek cross as a symbol of pharmacy?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:12 INFO     Iteration 14:  ################################################################################
+2026-09-22 10:35:12 INFO     question:      Which countries use the green Greek cross as a symbol of pharmacy?
+2026-09-22 10:35:12 INFO     low-t prediction: Greece and Cyprus
+2026-09-22 10:35:12 INFO     correct answer: ['France, Argentina, the United Kingdom, Belgium, Ireland, Italy, Spain, and India', 'France, Argentina, the United Kingdom, Belgium, Ireland, Italy, Spain, and India', 'France, Argentina, the United Kingdom, Belgium, Ireland, Italy, Spain, and India']
+2026-09-22 10:35:12 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:13 INFO     high-t prediction 1 : Greece and Cyprus
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:13 INFO     high-t prediction 2 : Greece and Turkey
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:13 INFO     high-t prediction 3 : 3 countries: Greece, Belgium, and France
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:13 INFO     high-t prediction 4 : Greece and Cyprus
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:13 INFO     high-t prediction 5 : 8 countries
+2026-09-22 10:35:14 INFO     p_true: -2.1993517875671387
+ 70%|███████   | 14/20 [00:32<00:10,  1.82s/it]2026-09-22 10:35:14 INFO     Current input: Question: What is the process of vaccination also known as?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:14 INFO     Iteration 15:  ################################################################################
+2026-09-22 10:35:14 INFO     question:      What is the process of vaccination also known as?
+2026-09-22 10:35:14 INFO     low-t prediction: immunization
+2026-09-22 10:35:14 INFO     correct answer: ['immunization', 'immunization', 'immunization']
+2026-09-22 10:35:14 INFO     accuracy:      1.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:14 INFO     high-t prediction 1 : immunization
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:14 INFO     high-t prediction 2 : immunization
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:14 INFO     high-t prediction 3 : immunization
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:14 INFO     high-t prediction 4 : immunization
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:15 INFO     high-t prediction 5 : immunization
+2026-09-22 10:35:15 INFO     p_true: -1.9906405210494995
+ 75%|███████▌  | 15/20 [00:33<00:08,  1.61s/it]2026-09-22 10:35:15 INFO     Current input: Question: To monitor what event would measuring radiance from vegetation provide information?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:15 INFO     Iteration 16:  ################################################################################
+2026-09-22 10:35:15 INFO     question:      To monitor what event would measuring radiance from vegetation provide information?
+2026-09-22 10:35:15 INFO     low-t prediction: drought stress
+2026-09-22 10:35:15 INFO     correct answer: ['carbon cycle', 'plant health status', 'the carbon cycle', 'plant health status', 'carbon cycle']
+2026-09-22 10:35:15 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:15 INFO     high-t prediction 1 : drought stress
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:15 INFO     high-t prediction 2 : drought stress
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:15 INFO     high-t prediction 3 : carbon sequestration
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:16 INFO     high-t prediction 4 : carbon cycle
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:16 INFO     high-t prediction 5 : forest fires
+2026-09-22 10:35:16 INFO     p_true: -2.7973036766052246
+ 80%|████████  | 16/20 [00:34<00:05,  1.46s/it]2026-09-22 10:35:16 INFO     Current input: Question: What is the number of plant species in economics and social interest?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:16 INFO     Iteration 17:  ################################################################################
+2026-09-22 10:35:16 INFO     question:      What is the number of plant species in economics and social interest?
+2026-09-22 10:35:16 INFO     low-t prediction: over 300,000
+2026-09-22 10:35:16 INFO     correct answer: ['438,000', '438,000', '438,000', '438,000 species']
+2026-09-22 10:35:16 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:17 INFO     high-t prediction 1 : 300,000
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:17 INFO     high-t prediction 2 : 220,000
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:17 INFO     high-t prediction 3 : over 25,000
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:17 INFO     high-t prediction 4 : over 120,000 species
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:18 INFO     high-t prediction 5 : over 300,000
+2026-09-22 10:35:18 INFO     p_true: -1.2456636428833008
+ 85%|████████▌ | 17/20 [00:36<00:04,  1.64s/it]2026-09-22 10:35:18 INFO     Current input: Question: Which set of countries have higher economic mobility than the United States?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:18 INFO     Iteration 18:  ################################################################################
+2026-09-22 10:35:18 INFO     question:      Which set of countries have higher economic mobility than the United States?
+2026-09-22 10:35:18 INFO     low-t prediction: Canada and the Nordic countries
+2026-09-22 10:35:18 INFO     correct answer: ['continental European countries', 'continental European countries', 'continental European']
+2026-09-22 10:35:18 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:18 INFO     high-t prediction 1 : Norway and Switzerland
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:19 INFO     high-t prediction 2 : Canada and Sweden
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:19 INFO     high-t prediction 3 : Denmark, Norway, and Sweden
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:19 INFO     high-t prediction 4 : Canada, Sweden, and Norway
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:19 INFO     high-t prediction 5 : Norway, Switzerland, and Denmark
+2026-09-22 10:35:20 INFO     p_true: -0.5691773295402527
+ 90%|█████████ | 18/20 [00:38<00:03,  1.60s/it]2026-09-22 10:35:20 INFO     Current input: Question: What do ctenophore use to capture their prey?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:20 INFO     Iteration 19:  ################################################################################
+2026-09-22 10:35:20 INFO     question:      What do ctenophore use to capture their prey?
+2026-09-22 10:35:20 INFO     low-t prediction: stinging cells called cnidoblasts
+2026-09-22 10:35:20 INFO     correct answer: ['colloblasts', 'colloblasts', 'colloblasts']
+2026-09-22 10:35:20 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:20 INFO     high-t prediction 1 : stinging cells called nematocysts
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:21 INFO     high-t prediction 2 : stinging cells called cnidoblasts.
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:21 INFO     high-t prediction 3 : cilia
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:21 INFO     high-t prediction 4 : eight long, sticky tentacles
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:21 INFO     high-t prediction 5 : sticky tentacles
+2026-09-22 10:35:21 INFO     p_true: -1.3477864265441895
+ 95%|█████████▌| 19/20 [00:40<00:01,  1.69s/it]2026-09-22 10:35:21 INFO     Current input: Question: What is the name of the area past the border that the megaregion extends into?
+Answer:
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:22 INFO     Iteration 20:  ################################################################################
+2026-09-22 10:35:22 INFO     question:      What is the name of the area past the border that the megaregion extends into?
+2026-09-22 10:35:22 INFO     low-t prediction: the Great Plains
+2026-09-22 10:35:22 INFO     correct answer: ['Tijuana', 'Tijuana', 'Tijuana']
+2026-09-22 10:35:22 INFO     accuracy:      0.0
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:22 INFO     high-t prediction 1 : the United States
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:22 INFO     high-t prediction 2 : neighboring countries and regions
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:22 INFO     high-t prediction 3 : secondary market
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:22 INFO     high-t prediction 4 : the surrounding regions or countries
+[transformers] Both `max_new_tokens` (=50) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2026-09-22 10:35:22 INFO     high-t prediction 5 : other countries or regions
+2026-09-22 10:35:23 INFO     p_true: -1.7787258625030518
+100%|██████████| 20/20 [00:41<00:00,  1.56s/it]100%|██████████| 20/20 [00:41<00:00,  2.06s/it]
+2026-09-22 10:35:44 INFO     Run complete.
+Overall validation split accuracy: 0.15

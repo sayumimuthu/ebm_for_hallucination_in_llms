@@ -17,6 +17,7 @@ import logging
 from typing import Any, Callable, Dict
 
 from hallucination_energy.data.preprocessing import get_reference
+from hallucination_energy.evaluation.squad_f1 import squad_f1
 
 
 def model_based_metric(predicted_answer: str, example: Dict[str, Any], model) -> float:
@@ -90,27 +91,22 @@ def get_gpt_metric(metric_name: str) -> Callable:
     return gpt_metric
 
 
+def squad_f1_metric(response: str, example: Dict[str, Any], *args, **kwargs) -> float:
+    """1.0 if the token-overlap F1 (``evaluation.squad_f1``) between
+    ``response`` and the best-matching gold answer is >= 50, else 0.0.
+    Needs no network access, LLM judge, or API key — see
+    ``evaluation.squad_f1`` module docstring for why this replaced an
+    ``evaluate.load("squad_v2")`` call."""
+    del args, kwargs
+    reference = get_reference(example)
+    f1 = squad_f1(response, reference["answers"]["text"])
+    return 1.0 if f1 >= 50.0 else 0.0
+
+
 def get_metric(metric: str) -> Callable:
     """Return an ``metric(response, example, model) -> float in {0.0, 1.0}``
     accuracy function. ``'squad'`` (default) needs no LLM judge or API key."""
     if metric == "squad":
-        from evaluate import load as load_hf_metric
-
-        squad_metric = load_hf_metric("squad_v2")
-
-        def squad_f1_metric(response, example, *args, **kwargs):
-            del args, kwargs
-            if "id" in example:
-                exid = example["id"]
-            elif "id" in example.get("reference", {}):
-                exid = example["reference"]["id"]
-            else:
-                raise ValueError("Example has no 'id'.")
-
-            prediction = {"prediction_text": response, "no_answer_probability": 0.0, "id": exid}
-            results = squad_metric.compute(predictions=[prediction], references=[get_reference(example)])
-            return 1.0 if results["f1"] >= 50.0 else 0.0
-
         return squad_f1_metric
     elif metric == "llm":
         return llm_metric

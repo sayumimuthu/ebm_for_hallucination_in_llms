@@ -144,8 +144,16 @@ def bootstrap(args) -> None:
         os.environ["CUDA_VISIBLE_DEVICES"] = args.cuda_visible_devices
     # Only attempts a HF Hub login if a token is actually configured (HF_TOKEN
     # env var or prior `huggingface-cli login`); never hardcode a token here.
-    if os.environ.get("HF_TOKEN"):
+    # `huggingface_hub.login()` always makes an online call to validate the
+    # token (it does not consult HF_HUB_OFFLINE/TRANSFORMERS_OFFLINE), so on
+    # a no-internet compute node it's a hard crash rather than a harmless
+    # no-op — even though it's unnecessary there: gated models already
+    # downloaded to the local cache load fine without re-authenticating.
+    offline = os.environ.get("HF_HUB_OFFLINE") or os.environ.get("TRANSFORMERS_OFFLINE")
+    if os.environ.get("HF_TOKEN") and not offline:
         login(token=os.environ["HF_TOKEN"])
+    elif os.environ.get("HF_TOKEN") and offline:
+        logging.info("HF_HUB_OFFLINE/TRANSFORMERS_OFFLINE is set: skipping huggingface_hub.login() (it always makes an online call). Relying on the local cache.")
 
 
 def init_model(args) -> HuggingfaceModel:

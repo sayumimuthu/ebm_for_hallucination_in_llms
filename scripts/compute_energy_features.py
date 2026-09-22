@@ -12,8 +12,17 @@ hardcoded paths or run IDs.
 Usage:
     python scripts/compute_energy_features.py \\
         --generations_path outputs/validation_generations.pkl \\
+        --reference_generations_path outputs/train_generations.pkl \\
         --out_dir outputs/metrics/run1 \\
         --num_calib 80 --num_negatives 2 --alpha 0.1
+
+``--reference_generations_path`` should be a DIFFERENT split than
+``--generations_path`` (e.g. the ``train_generations.pkl`` produced by the
+same ``generate.py`` run) — it's used only to fit the geometry energy's
+"trusted claim" density and the codelength surprisal stats. Omitting it
+falls back to reusing ``--generations_path`` for both, which is circular
+(see the runtime warning this prints) and should only be used for a quick
+smoke test, not a real diagnostic.
 
 Output (in ``--out_dir``):
     - energy_matrix.npz: {"X": N x 4 energy matrix, "y": accuracy labels}
@@ -24,6 +33,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 import pickle
 from typing import Any, Dict, List
@@ -48,7 +58,19 @@ from hallucination_energy.training.negatives import corrupt_claim_set, mix_claim
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--generations_path", required=True, help="Path to a *_generations.pkl file.")
+    p.add_argument("--generations_path", required=True, help="Path to a *_generations.pkl file (scored/calibrated on).")
+    p.add_argument(
+        "--reference_generations_path", default=None,
+        help=(
+            "Path to a SEPARATE *_generations.pkl (e.g. train_generations.pkl from the same "
+            "generate.py run) used only to fit the 'trusted claim' geometry density and the "
+            "codelength surprisal stats. If omitted, falls back to reusing --generations_path "
+            "for both, which is fitting the reference distributions on the same examples you "
+            "then score/evaluate — this is circular for the geometry energy in particular "
+            "(its AUROC will look artificially perfect) and is only intended as a quick "
+            "smoke-test fallback, not a real diagnostic."
+        ),
+    )
     p.add_argument("--out_dir", required=True)
     p.add_argument("--num_calib", type=int, default=80, help="Max number of examples to use for calibration/training.")
     p.add_argument("--num_negatives", type=int, default=2, help="Naive negatives per example (see training.negatives).")
@@ -61,6 +83,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    logging.basicConfig(format="%(asctime)s %(levelname)-8s %(message)s", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
     args = parse_args()
     rng = np.random.default_rng(args.seed)
     os.makedirs(args.out_dir, exist_ok=True)
@@ -68,11 +91,26 @@ def main() -> None:
     with open(args.generations_path, "rb") as fh:
         validation_generations: Dict[str, Any] = pickle.load(fh)
 
-    surprisal_stats = calibrate_surprisal_stats(validation_generations, min_accuracy=args.accuracy_threshold)
+    if args.reference_generations_path:
+        with open(args.reference_generations_path, "rb") as fh:
+            reference_generations: Dict[str, Any] = pickle.load(fh)
+    else:
+        logging.warning(
+            "--reference_generations_path not given: fitting the geometry density and "
+            "surprisal stats on the SAME examples being scored below (%s). This is circular "
+            "for the geometry energy in particular — its per-factor AUROC will look "
+            "artificially close to 1.0 regardless of any real signal. Pass "
+            "--reference_generations_path pointing at a separate split (e.g. "
+            "train_generations.pkl from the same generate.py run) for a trustworthy result.",
+            args.generations_path,
+        )
+        reference_generations = validation_generations
+
+    surprisal_stats = calibrate_surprisal_stats(reference_generations, min_accuracy=args.accuracy_threshold)
 
     trusted_claim_texts: List[str] = []
     context_corpus: List[str] = []
-    for ex in validation_generations.values():
+    for ex in reference_generations.values():
         mla = ex.get("most_likely_answer", {})
         if mla.get("accuracy", 0.0) >= args.accuracy_threshold and isinstance(mla.get("response"), str):
             trusted_claim_texts.extend(c.text for c in extract_claims(mla["response"]).claims)

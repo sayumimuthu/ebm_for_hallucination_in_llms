@@ -1,11 +1,3 @@
-[build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "hallucination-energy"
-version = "0.1.0"
-description = "Factorized, claim-level energy-based hallucination detection for LLMs."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -17,8 +9,10 @@ dependencies = [
     "huggingface_hub>=0.20",
     "tqdm>=4.66",
     "datasets>=2.18",   # hallucination_energy.data.loaders (squad/trivia_qa/nq/bioasq/svamp)
-    "evaluate>=0.4",    # hallucination_energy.evaluation.accuracy (squad F1 metric)
 ]
+# Note: `evaluate` is intentionally NOT a dependency. The squad accuracy
+# metric is a self-contained local implementation (evaluation/squad_f1.py)
+# rather than `evaluate.load("squad_v2")` — see that module's docstring.
 
 [project.optional-dependencies]
 # Better embeddings / density models / evidence scoring than the bundled
