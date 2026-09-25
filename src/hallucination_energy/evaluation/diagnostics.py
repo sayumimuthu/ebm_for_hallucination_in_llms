@@ -10,7 +10,7 @@ justification for the factorized approach.
 """
 from __future__ import annotations
 
-from typing import Dict, Iterable, List, Mapping, Sequence, Tuple
+from typing import Callable, Dict, Iterable, List, Mapping, Sequence, Tuple
 
 import numpy as np
 
@@ -51,3 +51,42 @@ def per_factor_auroc(
     from hallucination_energy.evaluation.metrics import auroc
 
     return {name: auroc(labels, energy_matrix[:, i]) for i, name in enumerate(order)}
+
+
+def composite_auroc(
+    energy_matrix: np.ndarray,
+    labels: np.ndarray,
+    weights: np.ndarray,
+    bias: float = 0.0,
+) -> float:
+    """AUROC of a *linear combination* of the energy factors (e.g.
+    NCE-learned weights, or equal weights as a naive reference) used as a
+    single fused hallucination score.
+
+    ``per_factor_auroc`` alone can't answer "did fusing the four energies
+    actually help" — a factor can dominate the learned weights (e.g. from
+    a contrastive objective trained on synthetic negatives) while itself
+    having poor or even sub-0.5 standalone AUROC on real labels. This
+    computes what the fused score, built from those exact weights, scores
+    on the real, labeled validation data.
+    """
+    from hallucination_energy.evaluation.metrics import auroc
+
+    scores = energy_matrix @ np.asarray(weights, dtype=np.float64) + bias
+    return auroc(labels, scores)
+
+
+def model_composite_auroc(
+    score_fn: Callable[[np.ndarray], np.ndarray],
+    energy_matrix: np.ndarray,
+    labels: np.ndarray,
+) -> float:
+    """Like ``composite_auroc``, but for a fusion score that is not a
+    simple linear combination (e.g. ``training.nonlinear_fusion.MLPEnergy``).
+    ``score_fn`` maps an (N, D) energy matrix to (N,) fused scores; higher
+    = more likely hallucinated, matching ``composite_auroc``'s convention.
+    """
+    from hallucination_energy.evaluation.metrics import auroc
+
+    scores = score_fn(energy_matrix)
+    return auroc(labels, scores)

@@ -7,17 +7,16 @@
     only on these negatives risks learning to detect linguistic corruption
     rather than factual failure.
 
-    The planned replacement is targeted, minimally-edited counterfactuals
-    per claim: entity substitution, relation/entity swap, relation
-    inversion, numerical perturbation, date/temporal change, negation,
-    causal reversal, attribution swap, and fabricated supporting detail.
-    That generator does not exist yet — implementing it (e.g. via an LLM
-    prompted to produce each counterfactual category, or a knowledge-graph
-    based entity/relation swap) is the next milestone after this v0
-    baseline is validated (see README roadmap and plan section 14-15).
+    Targeted, minimally-edited counterfactuals per claim (entity
+    substitution, relation inversion, negation, numerical/date
+    perturbation) are now implemented in
+    ``training.counterfactual_negatives`` — that is the generator that
+    should be used for real contrastive training. This module's functions
+    are kept as the "no hard negatives" ablation baseline (see
+    ``scripts/compute_energy_features.py``'s ``--negative_strategy``
+    flag), not as the primary strategy.
 
-Ported from ``ebm.ipynb``; kept as a fallback / ablation ("no hard
-negatives") baseline once real counterfactual negatives are implemented.
+Ported from ``ebm.ipynb``.
 """
 from __future__ import annotations
 

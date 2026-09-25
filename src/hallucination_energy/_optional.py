@@ -46,6 +46,13 @@ except Exception:  # pragma: no cover - optional dependency
     logsumexp = None  # type: ignore[assignment]
     HAS_SCIPY = False
 
+try:
+    import spacy  # noqa: F401
+    HAS_SPACY = True
+except Exception:  # pragma: no cover - optional dependency
+    spacy = None  # type: ignore[assignment]
+    HAS_SPACY = False
+
 
 def logsumexp_fallback(x, axis=None):
     """logsumexp that works whether or not scipy is installed."""
@@ -82,3 +89,26 @@ def get_entailment_model() -> Optional[Any]:
         logger.debug("EntailmentDeberta unavailable; falling back to embedding similarity.")
         _DEBERTA_MODEL = None
     return _DEBERTA_MODEL
+
+
+_SPACY_MODEL: Optional[Any] = "unset"  # sentinel distinct from a real None outcome
+
+
+def get_spacy_model(model_name: str = "en_core_web_sm") -> Optional[Any]:
+    """Lazily load a spaCy pipeline for NER/dependency parsing (used by
+    ``training.counterfactual_negatives`` for entity substitution and
+    relation inversion).
+    Returns ``None`` if spaCy or the model isn't installed, in which case
+    callers should fall back to the regex/heuristic equivalents. Cached
+    after the first call (successful or not) so repeated calls don't
+    re-attempt a load that's already known to fail.
+    """
+    global _SPACY_MODEL
+    if _SPACY_MODEL != "unset":
+        return _SPACY_MODEL
+    try:
+        _SPACY_MODEL = spacy.load(model_name)
+    except Exception:  # pragma: no cover - optional dependency / model not downloaded
+        logger.debug("spaCy model %s unavailable; falling back to regex heuristics.", model_name)
+        _SPACY_MODEL = None
+    return _SPACY_MODEL

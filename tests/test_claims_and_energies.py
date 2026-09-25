@@ -20,7 +20,7 @@ from hallucination_energy.energies.factorized_energy import compute_energy_parts
 from hallucination_energy.energies.geometry import fit_geometry_density, geometry_energy
 from hallucination_energy.energies.invariance import invariance_energy, sinkhorn_unbalanced
 from hallucination_energy.energies.normalization import EnergyNormalizer
-from hallucination_energy.evaluation.diagnostics import build_energy_matrix, energy_correlation_matrix
+from hallucination_energy.evaluation.diagnostics import build_energy_matrix, composite_auroc, energy_correlation_matrix
 from hallucination_energy.evaluation.metrics import auroc
 from hallucination_energy.retrieval.retriever import ContextRetriever
 from hallucination_energy.retrieval.verifier import default_verifier
@@ -168,6 +168,45 @@ def test_energy_normalizer_zscores():
         assert abs(v) < 1e-6  # midpoint should normalize to ~0
 
 
+def test_energy_normalizer_does_not_explode_on_near_constant_factor():
+    """Regression test for a real finding on ada: when a factor (there,
+    invariance energy) is ~constant on the reference split — e.g. because
+    that split lacks the paraphrase samples needed to compute it
+    meaningfully — its std must not fall back to the tiny `eps` floor.
+    Dividing by ~1e-6 turned a real but small difference into a z-score
+    in the thousands, making that factor numerically dominate a downstream
+    learned fusion despite carrying no real signal. It should instead be
+    left unscaled (std=1) when no reliable variance estimate exists."""
+    calib = [{"inv": 0.001, "ev": 1.0, "cl": 1.0, "geo": 1.0}] * 49 + [{"inv": 0.001, "ev": 3.0, "cl": 3.0, "geo": 3.0}]
+    normalizer = EnergyNormalizer.fit(calib)
+    assert normalizer.stds["inv"] == 1.0
+    assert "inv" in normalizer.degenerate_keys
+    z = normalizer.transform({"inv": 0.5, "ev": 2.0, "cl": 2.0, "geo": 2.0})
+    assert abs(z["inv"]) < 1.0  # centered but not exploded
+
+
+def test_energy_normalizer_fit_with_fallback_patches_degenerate_factor():
+    """A factor degenerate on the primary (e.g. reference) set should be
+    refit from the fallback set instead of staying silenced at std=1 —
+    left unscaled, it would count for ~nothing next to properly z-scored
+    peers in an equal- or learned-weight linear combination."""
+    # inv is constant (degenerate) on the primary set; ev/cl/geo have real variance.
+    primary = [{"inv": 0.001, "ev": 1.0 + 0.01 * i, "cl": 2.0 + 0.02 * i, "geo": 3.0 + 0.03 * i} for i in range(20)]
+    fallback = [{"inv": 0.1 * i, "ev": 0.0, "cl": 0.0, "geo": 0.0} for i in range(20)]
+    normalizer = EnergyNormalizer.fit_with_fallback(primary, fallback)
+    assert "inv" not in normalizer.degenerate_keys
+    assert normalizer.stds["inv"] > 0.1  # refit from the fallback's real spread, not left at 1.0
+    assert normalizer.stds["ev"] != 1.0  # untouched: ev wasn't degenerate on primary
+
+
+def test_energy_normalizer_fit_with_fallback_stays_degenerate_if_fallback_also_degenerate():
+    primary = [{"inv": 0.001, "ev": 1.0, "cl": 1.0, "geo": 1.0}] * 20
+    fallback = [{"inv": 0.001, "ev": 1.0, "cl": 1.0, "geo": 1.0}] * 20
+    normalizer = EnergyNormalizer.fit_with_fallback(primary, fallback)
+    assert "inv" in normalizer.degenerate_keys
+    assert normalizer.stds["inv"] == 1.0
+
+
 def test_compute_energy_parts_end_to_end():
     corpus = ["Insulin lowers blood glucose.", "Photosynthesis occurs in chloroplasts."]
     density_model, meta = fit_geometry_density(corpus, n_components=2)
@@ -214,3 +253,16 @@ def test_diagnostics_matrix_and_correlation():
     assert corr.shape == (4, 4)
     score = auroc(y, X[:, 0])
     assert 0.0 <= score <= 1.0
+
+
+def test_composite_auroc_matches_manual_linear_combination():
+    records = [
+        ({"inv": 0.1, "ev": 0.2, "cl": 0.3, "geo": 0.1}, 0),
+        ({"inv": 2.0, "ev": 2.1, "cl": 1.9, "geo": 2.2}, 1),
+        ({"inv": 0.2, "ev": 0.1, "cl": 0.2, "geo": 0.3}, 0),
+        ({"inv": 1.8, "ev": 2.0, "cl": 2.1, "geo": 1.9}, 1),
+    ]
+    X, y = build_energy_matrix(records)
+    weights = np.array([1.0, 0.0, 0.0, 0.0])  # equivalent to using "inv" alone
+    fused_score = composite_auroc(X, y, weights, bias=0.0)
+    assert fused_score == auroc(y, X[:, 0])
