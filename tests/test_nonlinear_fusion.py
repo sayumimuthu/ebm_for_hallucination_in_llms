@@ -13,7 +13,13 @@ import pytest
 
 from hallucination_energy.evaluation.diagnostics import model_composite_auroc
 from hallucination_energy.evaluation.metrics import auroc
-from hallucination_energy.training.nonlinear_fusion import MLPEnergy, mlp_energy_score, train_mlp_nce
+from hallucination_energy.training.nonlinear_fusion import (
+    MLPEnergy,
+    ResidualMLPEnergy,
+    mlp_energy_score,
+    train_mlp_nce,
+    train_residual_mlp_nce,
+)
 
 
 def test_mlp_energy_forward_shape():
@@ -55,6 +61,56 @@ def test_mlp_energy_score_no_grad_and_shape():
     scores = mlp_energy_score(model, np.random.default_rng(0).normal(size=(5, 4)).astype(np.float32))
     assert scores.shape == (5,)
     assert scores.dtype == np.float32
+
+
+def test_residual_mlp_energy_starts_as_pure_linear():
+    """At initialization (before any training), ResidualMLPEnergy must be
+    EXACTLY the zero linear model: linear weights/bias zero and the
+    residual branch's final layer zero -- the whole point of the
+    architecture is starting at the already-validated linear solution."""
+    import torch
+
+    model = ResidualMLPEnergy(input_dim=4, hidden_dim=8)
+    x = torch.randn(6, 4)
+    out = model(x)
+    assert torch.allclose(out, torch.zeros(6))
+
+
+def test_residual_mlp_energy_forward_shape():
+    import torch
+
+    model = ResidualMLPEnergy(input_dim=4, hidden_dim=8)
+    x = torch.randn(10, 4)
+    assert model(x).shape == (10,)
+
+
+def test_train_residual_mlp_nce_empty_input():
+    model, loss = train_residual_mlp_nce(np.zeros((0, 4), dtype=np.float32), np.zeros((0, 2, 4), dtype=np.float32))
+    assert loss == 0.0
+    assert mlp_energy_score(model, np.zeros((3, 4), dtype=np.float32)).shape == (3,)
+
+
+def test_train_residual_mlp_nce_separates_synthetic_positives_and_negatives():
+    rng = np.random.default_rng(0)
+    n = 60
+    pos = rng.normal(loc=0.0, scale=0.3, size=(n, 4)).astype(np.float32)
+    neg = (rng.normal(loc=0.0, scale=0.3, size=(n, 1, 4)) + np.array([3.0, 3.0, 3.0, 3.0])).astype(np.float32)
+
+    model, final_loss = train_residual_mlp_nce(pos, neg, hidden_dim=8, steps=200, lr=0.05, l2=1e-3, seed=0)
+    assert np.isfinite(final_loss)
+
+    pos_scores = mlp_energy_score(model, pos)
+    neg_scores = mlp_energy_score(model, neg.reshape(n, 4))
+    assert pos_scores.mean() < neg_scores.mean()
+
+
+def test_residual_mlp_linear_component_shape():
+    model, _ = train_residual_mlp_nce(
+        np.zeros((0, 4), dtype=np.float32), np.zeros((0, 2, 4), dtype=np.float32)
+    )
+    w, b = model.linear_component()
+    assert w.shape == (4,)
+    assert isinstance(b, float)
 
 
 def test_model_composite_auroc_matches_manual_score_fn():

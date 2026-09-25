@@ -64,7 +64,7 @@ from hallucination_energy.training.counterfactual_negatives import (
     generate_counterfactual_negatives,
 )
 from hallucination_energy.training.negatives import corrupt_claim_set, mix_claim_sets
-from hallucination_energy.training.nonlinear_fusion import mlp_energy_score, train_mlp_nce
+from hallucination_energy.training.nonlinear_fusion import mlp_energy_score, train_mlp_nce, train_residual_mlp_nce
 
 
 def parse_args() -> argparse.Namespace:
@@ -109,12 +109,14 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--alpha", type=float, default=0.1, help="Conformal miscoverage level.")
     p.add_argument("--accuracy_threshold", type=float, default=1.0, help="Accuracy >= this counts as 'trusted' for geometry/codelength fitting.")
     p.add_argument(
-        "--fusion_model", choices=["linear", "mlp"], default="linear",
+        "--fusion_model", choices=["linear", "mlp", "residual_mlp"], default="linear",
         help=(
             "'linear' (default): v0 E(e) = w^T e + b (training.contrastive.train_linear_nce). "
-            "'mlp': v1 nonlinear E(e) = MLP(e) (training.nonlinear_fusion.train_mlp_nce), same "
-            "NCE objective and 4 normalized energies — tests whether representing interactions "
-            "among the four factors beats their best linear combination."
+            "'mlp': v1 nonlinear E(e) = MLP(e) from scratch -- empirically UNDERPERFORMS linear "
+            "(overfits the local contrastive task; see training.nonlinear_fusion docstring), kept "
+            "for comparison, not recommended. 'residual_mlp' (recommended v1): E(e) = w^T e + b + "
+            "MLP_residual(e), residual branch zero-initialized so training starts at the linear "
+            "solution and only adds nonlinearity where it actually helps."
         ),
     )
     p.add_argument("--mlp_hidden_dim", type=int, default=16, help="Hidden width for --fusion_model mlp.")
@@ -348,18 +350,23 @@ def main() -> None:
         pos_array = np.stack(feature_pos)
         neg_array = np.stack(feature_negs)
 
-        if args.fusion_model == "mlp":
-            model, final_loss = train_mlp_nce(
+        if args.fusion_model in ("mlp", "residual_mlp"):
+            train_fn = train_residual_mlp_nce if args.fusion_model == "residual_mlp" else train_mlp_nce
+            model, final_loss = train_fn(
                 pos_array, neg_array, hidden_dim=args.mlp_hidden_dim,
                 steps=args.nce_steps, lr=args.nce_lr, l2=1e-3, seed=args.seed,
             )
             import torch  # local import: only needed for this branch
 
             torch.save(model.state_dict(), os.path.join(args.out_dir, "mlp_weights.pt"))
-            summary["fusion_model"] = "mlp"
+            summary["fusion_model"] = args.fusion_model
             summary["mlp_hidden_dim"] = args.mlp_hidden_dim
             summary["mlp_num_params"] = sum(p.numel() for p in model.parameters())
             summary["final_nce_loss"] = final_loss
+            if args.fusion_model == "residual_mlp":
+                lin_w, lin_b = model.linear_component()
+                summary["linear_component_weights"] = lin_w.tolist()
+                summary["linear_component_bias"] = lin_b
             score_fn = lambda x: mlp_energy_score(model, x)  # noqa: E731
         else:
             w, b = train_linear_nce(pos_array, neg_array, steps=args.nce_steps, lr=args.nce_lr, l2=1e-3)
