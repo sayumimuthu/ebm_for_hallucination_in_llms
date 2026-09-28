@@ -1,0 +1,102 @@
+2026-09-28 13:04:58 INFO     No device provided, using cuda:0
+2026-09-28 13:04:58 INFO     No modules.json found for sentence-transformers/all-MiniLM-L6-v2, initializing a new SentenceTransformer model.
+2026-09-28 13:05:00 WARNING  Factors ['inv'] had ~zero variance across 200 reference-split examples; refitting their scale from a 200-example sample of the validation split instead.
+{
+  "conformal_threshold": -4.170024871826172,
+  "alpha": 0.1,
+  "n_calib": 500,
+  "energy_normalizer": {
+    "means": {
+      "inv": 0.40021396106481455,
+      "ev": -0.08055798743168513,
+      "cl": 0.6878898921608925,
+      "geo": 12.465549842213559
+    },
+    "stds": {
+      "inv": 0.17953493878581808,
+      "ev": 0.10996359007079462,
+      "cl": 3.038537748288899,
+      "geo": 495.8806427753069
+    },
+    "degenerate_keys": []
+  },
+  "per_factor_auroc": {
+    "inv": 0.7555109801709188,
+    "ev": 0.6210848534235984,
+    "cl": 0.5343195637184228,
+    "geo": 0.4444827514156168
+  },
+  "per_factor_auroc_ci": {
+    "inv": {
+      "point": 0.7555109801709188,
+      "ci_low": 0.701673087120675,
+      "ci_high": 0.8047277631897141,
+      "std": 0.026230148146388632,
+      "n_bootstrap_valid": 1000
+    },
+    "ev": {
+      "point": 0.6210848534235984,
+      "ci_low": 0.5738947109289048,
+      "ci_high": 0.6708363173718209,
+      "std": 0.025188643575167896,
+      "n_bootstrap_valid": 1000
+    },
+    "cl": {
+      "point": 0.5343195637184228,
+      "ci_low": 0.47928301483338026,
+      "ci_high": 0.585231381291223,
+      "std": 0.02698594912169372,
+      "n_bootstrap_valid": 1000
+    },
+    "geo": {
+      "point": 0.4444827514156168,
+      "ci_low": 0.3975561063264233,
+      "ci_high": 0.49584297025846746,
+      "std": 0.02599257178057716,
+      "n_bootstrap_valid": 1000
+    }
+  },
+  "fusion_model": "residual_mlp",
+  "mlp_hidden_dim": 16,
+  "mlp_num_params": 102,
+  "final_nce_loss": 0.45784249901771545,
+  "best_monitor_composite_auroc": 0.7514887481978311,
+  "linear_component_weights": [
+    0.029999995604157448,
+    0.029998794198036194,
+    -0.02999989502131939,
+    0.0299999937415123
+  ],
+  "linear_component_bias": -0.02767818421125412,
+  "composite_auroc_learned": 0.7514887481978311,
+  "composite_auroc_equal_weights": 0.7270837251091748,
+  "composite_auroc_learned_ci": {
+    "point": 0.7514887481978311,
+    "ci_low": 0.7032845663366342,
+    "ci_high": 0.7960272103145788,
+    "std": 0.024352437190764926,
+    "n_bootstrap_valid": 1000
+  },
+  "composite_auroc_equal_weights_ci": {
+    "point": 0.7270837251091748,
+    "ci_low": 0.6749883189498528,
+    "ci_high": 0.7728573044999385,
+    "std": 0.024592732310685764,
+    "n_bootstrap_valid": 1000
+  },
+  "composite_vs_best_factor": {
+    "best_factor": "inv",
+    "point": -0.004022231973087709,
+    "ci_low": -0.04314762832807982,
+    "ci_high": 0.03294700853030003,
+    "significant": false,
+    "n_bootstrap_valid": 1000
+  },
+  "composite_vs_equal_weights": {
+    "point": 0.02440502308865622,
+    "ci_low": -0.008887773394156867,
+    "ci_high": 0.0573779376361342,
+    "significant": false,
+    "n_bootstrap_valid": 1000
+  }
+}

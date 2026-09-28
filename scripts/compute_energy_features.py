@@ -43,6 +43,7 @@ import numpy as np
 from hallucination_energy.claims.extraction import extract_claims
 from hallucination_energy.energies.codelength import calibrate_surprisal_stats
 from hallucination_energy.energies.factorized_energy import (
+    ENERGY_ORDER,
     compute_energy_parts,
     composite_energy,
     energy_parts_to_vector,
@@ -56,6 +57,7 @@ from hallucination_energy.evaluation.diagnostics import (
     model_composite_auroc,
     per_factor_auroc,
 )
+from hallucination_energy.evaluation.metrics import bootstrap_auroc_diff_ci, bootstrap_ci
 from hallucination_energy.retrieval.retriever import ContextRetriever, collect_docs_from_example
 from hallucination_energy.retrieval.verifier import default_verifier
 from hallucination_energy.training.contrastive import train_linear_nce
@@ -123,6 +125,15 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--nce_steps", type=int, default=150)
     p.add_argument("--nce_lr", type=float, default=0.03)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument(
+        "--n_bootstrap", type=int, default=1000,
+        help=(
+            "Bootstrap resamples for AUROC confidence intervals (per-factor, composite, and the "
+            "paired significance test of composite fusion vs. the best single raw factor / "
+            "equal-weight fusion). A single AUROC point estimate can't tell you whether an "
+            "observed gap is real or noise at n_calib ~ 200 -- these CIs can."
+        ),
+    )
     return p.parse_args()
 
 
@@ -345,6 +356,10 @@ def main() -> None:
         summary["correlation_matrix"] = energy_correlation_matrix(energy_matrix).tolist()
     if energy_matrix.shape[0] > 0 and len(np.unique(labels)) > 1:
         summary["per_factor_auroc"] = per_factor_auroc(energy_matrix, labels)
+        summary["per_factor_auroc_ci"] = {
+            name: bootstrap_ci(labels, energy_matrix[:, i], n_bootstrap=args.n_bootstrap, seed=args.seed)
+            for i, name in enumerate(ENERGY_ORDER)
+        }
 
     if feature_pos and feature_negs:
         pos_array = np.stack(feature_pos)
@@ -352,9 +367,24 @@ def main() -> None:
 
         if args.fusion_model in ("mlp", "residual_mlp"):
             train_fn = train_residual_mlp_nce if args.fusion_model == "residual_mlp" else train_mlp_nce
-            model, final_loss = train_fn(
+
+            # NCE training's loss never sees real labels, so nothing in the
+            # optimization itself stops it from drifting toward a solution
+            # that satisfies the synthetic contrastive task while ranking
+            # real examples worse than an earlier point in training did
+            # (observed in practice, twice). Track composite_auroc against
+            # the real labels every few steps and keep the best checkpoint,
+            # instead of whichever step training happens to end on.
+            monitor_fn = None
+            if normalized_energy_matrix.shape[0] > 0 and len(np.unique(labels)) > 1:
+                monitor_fn = lambda m: model_composite_auroc(  # noqa: E731
+                    lambda x: mlp_energy_score(m, x), normalized_energy_matrix, labels
+                )
+
+            model, final_loss, best_monitor_score = train_fn(
                 pos_array, neg_array, hidden_dim=args.mlp_hidden_dim,
                 steps=args.nce_steps, lr=args.nce_lr, l2=1e-3, seed=args.seed,
+                monitor_fn=monitor_fn,
             )
             import torch  # local import: only needed for this branch
 
@@ -363,6 +393,7 @@ def main() -> None:
             summary["mlp_hidden_dim"] = args.mlp_hidden_dim
             summary["mlp_num_params"] = sum(p.numel() for p in model.parameters())
             summary["final_nce_loss"] = final_loss
+            summary["best_monitor_composite_auroc"] = best_monitor_score
             if args.fusion_model == "residual_mlp":
                 lin_w, lin_b = model.linear_component()
                 summary["linear_component_weights"] = lin_w.tolist()
@@ -382,9 +413,38 @@ def main() -> None:
         # the learned fusion — and an equal-weight linear reference — against
         # the real validation labels, not the synthetic NCE task.
         if normalized_energy_matrix.shape[0] > 0 and len(np.unique(labels)) > 1:
+            fused_scores = score_fn(normalized_energy_matrix)
+            equal_weight_scores = normalized_energy_matrix @ np.ones(normalized_energy_matrix.shape[1])
+
             summary["composite_auroc_learned"] = model_composite_auroc(score_fn, normalized_energy_matrix, labels)
             summary["composite_auroc_equal_weights"] = composite_auroc(
                 normalized_energy_matrix, labels, np.ones(normalized_energy_matrix.shape[1])
+            )
+
+            # A single point estimate can't say whether an observed gap
+            # (e.g. fusion vs. the best raw factor) is real or noise at
+            # n_calib ~ 200 -- a single dataset resample has already flipped
+            # this ranking once in practice. Bootstrap CIs, plus a PAIRED
+            # bootstrap on the difference (same resampled examples for both
+            # scores each iteration, so it accounts for their correlation
+            # rather than just comparing two separate marginal intervals).
+            summary["composite_auroc_learned_ci"] = bootstrap_ci(
+                labels, fused_scores, n_bootstrap=args.n_bootstrap, seed=args.seed
+            )
+            summary["composite_auroc_equal_weights_ci"] = bootstrap_ci(
+                labels, equal_weight_scores, n_bootstrap=args.n_bootstrap, seed=args.seed
+            )
+
+            best_factor_idx = int(np.argmax([summary["per_factor_auroc"][name] for name in ENERGY_ORDER]))
+            summary["composite_vs_best_factor"] = {
+                "best_factor": ENERGY_ORDER[best_factor_idx],
+                **bootstrap_auroc_diff_ci(
+                    labels, fused_scores, energy_matrix[:, best_factor_idx],
+                    n_bootstrap=args.n_bootstrap, seed=args.seed,
+                ),
+            }
+            summary["composite_vs_equal_weights"] = bootstrap_auroc_diff_ci(
+                labels, fused_scores, equal_weight_scores, n_bootstrap=args.n_bootstrap, seed=args.seed,
             )
 
     with open(os.path.join(args.out_dir, "summary.json"), "w") as fh:

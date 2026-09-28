@@ -23,21 +23,33 @@
     i.e. it overfits the contrastive *task* itself, not the sample size.
 
     ``ResidualMLPEnergy`` (``E(e) = w^T e + b + MLP_residual(e)``, residual
-    branch zero-initialized) fixes this by construction: at
-    initialization it is *exactly* the already-validated linear model;
-    joint training can only introduce nonlinearity where doing so reduces
-    the NCE loss more than the linear term alone already does. This tests
-    "does adding nonlinearity on top of the linear structure help" rather
-    than "does discarding the linear structure and starting over help."
-    Prefer this over ``MLPEnergy`` unless you have a specific reason to
-    test the from-scratch model.
+    branch zero-initialized) fixes the *starting point* by construction:
+    at initialization it is exactly the already-validated linear model.
+    But a second real run showed this isn't enough on its own: even
+    starting from a good linear solution, joint NCE training can still
+    drift the *linear* component itself toward a sign-flipped, locally
+    contrastive-optimal but globally label-inconsistent solution (observed:
+    the codelength weight ended up strongly *negative*, opposite its own
+    standalone AUROC direction), landing below equal-weighting again
+    (0.671 vs 0.697). Zero-init only fixes where training starts, not
+    where the (label-blind) NCE objective wanders during training.
+
+    ``monitor_fn`` (in ``train_mlp_nce``/``train_residual_mlp_nce``) fixes
+    the actual gap: track a real-label metric (typically
+    ``evaluation.diagnostics.model_composite_auroc``) periodically during
+    training and keep the best-scoring checkpoint instead of whichever
+    step training happens to end on. This is standard validation-based
+    checkpoint selection, not new training signal — the model never sees
+    labels in its gradient — but it stops "train for N steps and hope the
+    last step is good" from silently reporting a worse-than-best result.
 
     ``torch`` is already a core project dependency (used for generation),
     so this adds no new install.
 """
 from __future__ import annotations
 
-from typing import Tuple
+import copy
+from typing import Callable, Optional, Tuple
 
 import numpy as np
 import torch
@@ -101,12 +113,22 @@ def _run_nce_training(
     l2: float,
     seed: int,
     verbose: bool,
-) -> float:
+    monitor_fn: Optional[Callable[[nn.Module], float]] = None,
+    monitor_every: int = 10,
+) -> Tuple[float, Optional[float]]:
     """Shared NCE training loop for any ``model(x) -> (N,) energy``
-    module. Returns the final training loss (0.0 if given no data, in
-    which case ``model`` is left at its initialization)."""
+    module. Returns ``(final_loss, best_monitor_score)`` (0.0/None if given
+    no data, in which case ``model`` is left at its initialization).
+
+    If ``monitor_fn`` is given, it's called every ``monitor_every`` steps
+    (and after the last step) with the model in eval mode; whichever
+    snapshot scores highest is restored into ``model`` before returning —
+    see the module docstring for why this matters (NCE training can drift
+    away from a good solution with nothing to stop it, since the loss
+    itself never sees real labels).
+    """
     if features_pos.size == 0 or features_neg.size == 0:
-        return 0.0
+        return 0.0, None
     if features_neg.ndim == 2:
         features_neg = features_neg[:, None, :]
 
@@ -117,6 +139,8 @@ def _run_nce_training(
     neg = torch.tensor(features_neg, dtype=torch.float32)  # (N, K, D)
     N, K, D = neg.shape
 
+    best_score: Optional[float] = None
+    best_state = None
     final_loss = 0.0
     for step in range(steps):
         optimizer.zero_grad()
@@ -131,7 +155,18 @@ def _run_nce_training(
         final_loss = float(loss.item())
         if verbose and step % max(1, steps // 10) == 0:
             print(f"step={step} nce_loss={final_loss:.4f}")
-    return final_loss
+
+        if monitor_fn is not None and (step % monitor_every == 0 or step == steps - 1):
+            model.eval()
+            score = monitor_fn(model)
+            model.train()
+            if best_score is None or score > best_score:
+                best_score = score
+                best_state = copy.deepcopy(model.state_dict())
+
+    if best_state is not None:
+        model.load_state_dict(best_state)
+    return final_loss, best_score
 
 
 def train_mlp_nce(
@@ -143,14 +178,19 @@ def train_mlp_nce(
     l2: float = 1e-3,
     seed: int = 42,
     verbose: bool = False,
-) -> Tuple[MLPEnergy, float]:
+    monitor_fn: Optional[Callable[[nn.Module], float]] = None,
+    monitor_every: int = 10,
+) -> Tuple[MLPEnergy, float, Optional[float]]:
     """Fits a from-scratch ``MLPEnergy``. See the module docstring for why
-    ``train_residual_mlp_nce`` is preferred in practice."""
+    ``train_residual_mlp_nce`` is preferred in practice. Returns
+    ``(model, final_loss, best_monitor_score)``."""
     input_dim = features_pos.shape[-1] if features_pos.size else 4
     model = MLPEnergy(input_dim, hidden_dim)
-    final_loss = _run_nce_training(model, features_pos, features_neg, steps, lr, l2, seed, verbose)
+    final_loss, best_score = _run_nce_training(
+        model, features_pos, features_neg, steps, lr, l2, seed, verbose, monitor_fn, monitor_every
+    )
     model.eval()
-    return model, final_loss
+    return model, final_loss, best_score
 
 
 def train_residual_mlp_nce(
@@ -162,15 +202,20 @@ def train_residual_mlp_nce(
     l2: float = 1e-3,
     seed: int = 42,
     verbose: bool = False,
-) -> Tuple[ResidualMLPEnergy, float]:
+    monitor_fn: Optional[Callable[[nn.Module], float]] = None,
+    monitor_every: int = 10,
+) -> Tuple[ResidualMLPEnergy, float, Optional[float]]:
     """Fits ``ResidualMLPEnergy`` (linear + zero-initialized nonlinear
     correction, jointly trained) — the recommended v1 fusion model. Same
-    NCE objective and input shapes as ``train_linear_nce``/``train_mlp_nce``."""
+    NCE objective and input shapes as ``train_linear_nce``/``train_mlp_nce``.
+    Returns ``(model, final_loss, best_monitor_score)``."""
     input_dim = features_pos.shape[-1] if features_pos.size else 4
     model = ResidualMLPEnergy(input_dim, hidden_dim)
-    final_loss = _run_nce_training(model, features_pos, features_neg, steps, lr, l2, seed, verbose)
+    final_loss, best_score = _run_nce_training(
+        model, features_pos, features_neg, steps, lr, l2, seed, verbose, monitor_fn, monitor_every
+    )
     model.eval()
-    return model, final_loss
+    return model, final_loss, best_score
 
 
 def mlp_energy_score(model: nn.Module, features: np.ndarray) -> np.ndarray:

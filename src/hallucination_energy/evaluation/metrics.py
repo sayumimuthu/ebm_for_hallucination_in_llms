@@ -7,7 +7,7 @@ philosophy, see ``hallucination_energy._optional``).
 """
 from __future__ import annotations
 
-from typing import Sequence
+from typing import Callable, Dict, Optional, Sequence
 
 import numpy as np
 
@@ -55,6 +55,103 @@ def auprc(labels: Sequence[int], scores: Sequence[float]) -> float:
     recall = np.concatenate(([0.0], recall))
     precision = np.concatenate(([1.0], precision))
     return float(np.sum(np.diff(recall) * precision[1:]))
+
+
+def bootstrap_ci(
+    labels: Sequence[int],
+    scores: Sequence[float],
+    metric_fn: Callable[[np.ndarray, np.ndarray], float] = auroc,
+    n_bootstrap: int = 1000,
+    ci: float = 0.95,
+    seed: Optional[int] = None,
+) -> Dict[str, float]:
+    """Percentile bootstrap confidence interval for ``metric_fn(labels,
+    scores)`` (default: AUROC). Motivated by a real finding: rerunning the
+    same pipeline on a freshly-regenerated dataset flipped whether linear
+    fusion beat the best single energy factor, with no way to tell from a
+    single point estimate whether either result was more than noise at
+    n~200. Resamples ``(label, score)`` pairs WITH replacement
+    ``n_bootstrap`` times; resamples with only one class present (AUROC
+    undefined) are skipped rather than counted.
+
+    Returns ``{"point", "ci_low", "ci_high", "std", "n_bootstrap_valid"}``.
+    """
+    y = np.asarray(labels)
+    s = np.asarray(scores)
+    n = len(y)
+    point = metric_fn(y, s)
+    rng = np.random.default_rng(seed)
+    boot_scores = []
+    for _ in range(n_bootstrap):
+        idx = rng.integers(0, n, size=n)
+        y_b = y[idx]
+        if len(np.unique(y_b)) < 2:
+            continue
+        boot_scores.append(metric_fn(y_b, s[idx]))
+    boot_arr = np.asarray(boot_scores, dtype=np.float64)
+    lo_pct = (1 - ci) / 2 * 100
+    hi_pct = (1 + ci) / 2 * 100
+    if boot_arr.size == 0:
+        return {"point": float(point), "ci_low": float("nan"), "ci_high": float("nan"),
+                "std": float("nan"), "n_bootstrap_valid": 0}
+    return {
+        "point": float(point),
+        "ci_low": float(np.percentile(boot_arr, lo_pct)),
+        "ci_high": float(np.percentile(boot_arr, hi_pct)),
+        "std": float(boot_arr.std()),
+        "n_bootstrap_valid": int(boot_arr.size),
+    }
+
+
+def bootstrap_auroc_diff_ci(
+    labels: Sequence[int],
+    scores_a: Sequence[float],
+    scores_b: Sequence[float],
+    n_bootstrap: int = 1000,
+    ci: float = 0.95,
+    seed: Optional[int] = None,
+) -> Dict[str, float]:
+    """Paired bootstrap CI for ``AUROC(scores_a) - AUROC(scores_b)`` on the
+    SAME resampled examples each iteration — e.g. two fusion strategies
+    scored against the same labels. This is more informative than
+    comparing two separate marginal ``bootstrap_ci`` intervals, since it
+    accounts for the correlation between ``scores_a`` and ``scores_b``
+    (both computed on the same underlying examples): two marginal CIs can
+    overlap even when the paired difference is consistently one-signed.
+
+    ``significant`` is true iff the CI excludes 0 (whole interval above or
+    below zero) at the given confidence level.
+
+    Returns ``{"point", "ci_low", "ci_high", "significant", "n_bootstrap_valid"}``.
+    """
+    y = np.asarray(labels)
+    a = np.asarray(scores_a)
+    b = np.asarray(scores_b)
+    n = len(y)
+    point = auroc(y, a) - auroc(y, b)
+    rng = np.random.default_rng(seed)
+    diffs = []
+    for _ in range(n_bootstrap):
+        idx = rng.integers(0, n, size=n)
+        y_b = y[idx]
+        if len(np.unique(y_b)) < 2:
+            continue
+        diffs.append(auroc(y_b, a[idx]) - auroc(y_b, b[idx]))
+    diff_arr = np.asarray(diffs, dtype=np.float64)
+    lo_pct = (1 - ci) / 2 * 100
+    hi_pct = (1 + ci) / 2 * 100
+    if diff_arr.size == 0:
+        return {"point": float(point), "ci_low": float("nan"), "ci_high": float("nan"),
+                "significant": False, "n_bootstrap_valid": 0}
+    ci_low = float(np.percentile(diff_arr, lo_pct))
+    ci_high = float(np.percentile(diff_arr, hi_pct))
+    return {
+        "point": float(point),
+        "ci_low": ci_low,
+        "ci_high": ci_high,
+        "significant": bool(ci_low > 0 or ci_high < 0),
+        "n_bootstrap_valid": int(diff_arr.size),
+    }
 
 
 def expected_calibration_error(

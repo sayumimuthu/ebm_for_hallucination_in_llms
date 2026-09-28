@@ -1,6 +1,3 @@
-2026-09-28 08:51:48 INFO     No device provided, using cuda:0
-2026-09-28 08:51:48 INFO     No modules.json found for sentence-transformers/all-MiniLM-L6-v2, initializing a new SentenceTransformer model.
-2026-09-28 08:51:49 WARNING  Factors ['inv'] had ~zero variance across 100 reference-split examples; refitting their scale from a 100-example sample of the validation split instead.
 {
   "conformal_threshold": 316.10040283203125,
   "alpha": 0.1,
@@ -20,6 +17,32 @@
     },
     "degenerate_keys": []
   },
+  "correlation_matrix": [
+    [
+      1.0,
+      -0.13559216544611588,
+      0.1973379846717805,
+      0.08980481979471025
+    ],
+    [
+      -0.13559216544611588,
+      1.0,
+      -0.12854733104746,
+      -0.15918631316770143
+    ],
+    [
+      0.19733798467178046,
+      -0.12854733104746,
+      1.0,
+      0.07944364495595785
+    ],
+    [
+      0.08980481979471025,
+      -0.1591863131677014,
+      0.07944364495595785,
+      1.0
+    ]
+  ],
   "per_factor_auroc": {
     "inv": 0.7329192546583851,
     "ev": 0.5732636928289102,
