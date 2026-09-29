@@ -48,7 +48,7 @@ def model_based_metric(predicted_answer: str, example: Dict[str, Any], model) ->
     if "gpt" in model.model_name.lower():
         predicted = model.predict(prompt, 0.01)
     else:
-        predicted, _, _ = model.predict(prompt, 0.01)
+        predicted, _, _, _ = model.predict(prompt, 0.01)
 
     if "yes" in predicted.lower():
         return 1.0

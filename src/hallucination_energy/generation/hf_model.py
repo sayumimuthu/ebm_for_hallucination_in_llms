@@ -371,6 +371,22 @@ class HuggingfaceModel(BaseModel):
         if len(log_likelihoods) == 0:
             raise ValueError("No log-likelihoods were produced for this generation.")
 
+        # Per-token log-partition-function logsumexp(logits), T=1, i.e. the
+        # raw (pre-softmax) logits' logsumexp over the full vocabulary at
+        # each generated step -- the quantity the Semantic Energy baseline
+        # (baselines.semantic_energy) needs, E(x) = -T*logsumexp(logits/T).
+        # `outputs.scores` holds the full per-step logit vectors already
+        # produced by `output_scores=True` above; only this scalar summary
+        # is persisted (not the full [n_generated, vocab_size] logits) to
+        # avoid an intractable storage blowup (vocab_size * n_tokens *
+        # n_generations * n_examples floats). T is fixed at capture time
+        # to the model's natural scale (T=1); re-deriving a different T
+        # later is not possible from this scalar alone, only from the full
+        # logits, which are not kept.
+        token_logsumexp = [torch.logsumexp(step_scores[0], dim=-1).item() for step_scores in outputs.scores]
+        if len(token_logsumexp) != 1:
+            token_logsumexp = token_logsumexp[:n_generated]
+
         hidden_states = (last_token_embedding,)
 
         if return_latent:
@@ -378,7 +394,7 @@ class HuggingfaceModel(BaseModel):
         else:
             hidden_states += (None, None)
 
-        return_values = (sliced_answer, log_likelihoods, hidden_states)
+        return_values = (sliced_answer, log_likelihoods, hidden_states, token_logsumexp)
 
         return return_values
 

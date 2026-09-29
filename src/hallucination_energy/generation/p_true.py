@@ -45,7 +45,7 @@ def construct_few_shot_prompt(
         is_correct = 0.0
         for j in range(num_generations + 1):
             temperature = 0.1 if j == 0 else 1.0
-            response, _, _ = model.predict(local_prompt, temperature)
+            response, _, _, _ = model.predict(local_prompt, temperature)
             logging.info("P_TRUE >> Current Response: ".ljust(25) + response)
 
             responses.append(response)

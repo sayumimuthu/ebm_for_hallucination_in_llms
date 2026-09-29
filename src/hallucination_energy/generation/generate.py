@@ -33,12 +33,24 @@ Additional fixes made while vendoring the upstream argument parser:
     ``--compute_uncertainties`` (Semantic Entropy, p_ik, etc. via the
     upstream ``compute_uncertainty_measures.py``) now defaults to
     ``False`` and, if set, only logs a warning: that script is
-    wandb-run-restore-coupled and is deferred until the Semantic Entropy /
-    Semantic Entropy Probes baselines are implemented (see
-    ``hallucination_energy/baselines/``). This script still produces
-    everything ``scripts/compute_energy_features.py`` needs
-    (``*_generations.pkl`` with token log-likelihoods, hidden states, and
-    accuracy) independent of that flag.
+    wandb-run-restore-coupled and was never reimplemented here — the
+    ``hallucination_energy/baselines/`` modules compute Semantic Entropy
+    and the other baselines directly from ``*_generations.pkl``, without
+    needing this flag. This script still produces everything
+    ``scripts/compute_energy_features.py`` needs (``*_generations.pkl``
+    with token log-likelihoods, hidden states, and accuracy) independent
+    of that flag.
+
+.. note::
+    Each generation record (``most_likely_answer`` and each entry of
+    ``responses``) now also carries ``token_logsumexp``: the per-token
+    ``logsumexp(logits)`` (T=1) needed by the Semantic Energy baseline
+    (``baselines.semantic_energy``) — see ``generation.hf_model.predict``.
+    ``responses`` entries are 5-tuples,
+    ``(text, token_log_likelihoods, embedding, accuracy, token_logsumexp)``;
+    existing code that only reads ``r[0]`` (e.g.
+    ``scripts/compute_energy_features.py``) is unaffected by the added
+    element.
 """
 from __future__ import annotations
 
@@ -322,14 +334,16 @@ def main(args):
             for i in range(num_generations):
                 temperature = 0.1 if i == 0 else args.temperature
 
-                predicted_answer, token_log_likelihoods, hidden_states = model.predict(
+                predicted_answer, token_log_likelihoods, hidden_states, token_logsumexp = model.predict(
                     local_prompt, temperature, return_latent=True
                 )
 
                 compute_acc = args.compute_accuracy_at_all_temps or (i == 0)
                 acc = metric(predicted_answer, example, model) if (correct_answer and compute_acc) else 0.0
 
-                most_likely_answer_dict = build_answer_record(predicted_answer, token_log_likelihoods, hidden_states, acc)
+                most_likely_answer_dict = build_answer_record(
+                    predicted_answer, token_log_likelihoods, hidden_states, acc, token_logsumexp
+                )
 
                 if i == 0:
                     logging.info("Iteration " + str(it) + ":  " + 80 * "#")
@@ -349,7 +363,7 @@ def main(args):
                 else:
                     logging.info("high-t prediction ".ljust(15) + str(i) + " : " + predicted_answer)
                     full_responses.append(
-                        (predicted_answer, token_log_likelihoods, most_likely_answer_dict["embedding"], acc)
+                        (predicted_answer, token_log_likelihoods, most_likely_answer_dict["embedding"], acc, token_logsumexp)
                     )
                     generations_for_clustering.setdefault(example["id"], {})[i] = most_likely_answer_dict
 

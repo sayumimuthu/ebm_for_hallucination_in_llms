@@ -25,7 +25,9 @@ falls back to reusing ``--generations_path`` for both, which is circular
 smoke test, not a real diagnostic.
 
 Output (in ``--out_dir``):
-    - energy_matrix.npz: {"X": N x 4 energy matrix, "y": accuracy labels}
+    - energy_matrix.npz: {"X": N x 4 energy matrix, "y": accuracy labels,
+      "ids": example ids, same row order as X/y -- used by
+      scripts/run_evaluation.py to align baseline scores to these rows}
     - linear_weights.npz: {"w": learned NCE weights, "b": bias} (if trained)
     - summary.json: conformal threshold + per-factor correlations/AUROC
 """
@@ -287,6 +289,7 @@ def main() -> None:
     energy_rows: List[np.ndarray] = []
     normalized_energy_rows: List[np.ndarray] = []
     label_rows: List[int] = []
+    id_rows: List[str] = []
     feature_pos: List[np.ndarray] = []
     feature_negs: List[List[np.ndarray]] = []
     calib_energies: List[float] = []
@@ -297,6 +300,7 @@ def main() -> None:
         mla = ex.get("most_likely_answer", {})
         if not mla.get("token_log_likelihoods"):
             continue
+        id_rows.append(tid)
         paraphrases = [r[0] for r in ex.get("responses", [])[:5] if isinstance(r, (list, tuple)) and r]
         local_docs = collect_docs_from_example(ex, max_docs=8) or context_corpus[:8]
         retriever = ContextRetriever(local_docs)
@@ -341,7 +345,14 @@ def main() -> None:
         np.stack(normalized_energy_rows) if normalized_energy_rows else np.zeros((0, 4), dtype=np.float32)
     )
     labels = np.asarray(label_rows, dtype=np.int64)
-    np.savez(os.path.join(args.out_dir, "energy_matrix.npz"), X=energy_matrix, y=labels)
+    # `ids` (the example ids each row corresponds to, same order as X/y) lets
+    # other scripts -- e.g. run_evaluation.py's baseline comparison -- align
+    # a baseline's per-example scores to this exact row order without
+    # recomputing the FHEM energies themselves.
+    np.savez(
+        os.path.join(args.out_dir, "energy_matrix.npz"),
+        X=energy_matrix, y=labels, ids=np.array(id_rows, dtype=object),
+    )
 
     tau = conformal_threshold(calib_energies, alpha=args.alpha) if calib_energies else float("inf")
 

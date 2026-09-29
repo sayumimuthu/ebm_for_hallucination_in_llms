@@ -17,6 +17,7 @@ def build_answer_record(
     token_log_likelihoods: List[float],
     hidden_states: Tuple[Optional[Any], Optional[Any], Optional[Any]],
     accuracy: float,
+    token_logsumexp: Optional[List[float]] = None,
 ) -> Dict[str, Any]:
     embedding, emb_last_before_gen, emb_before_eos = hidden_states
     return {
@@ -26,4 +27,5 @@ def build_answer_record(
         "accuracy": accuracy,
         "emb_last_tok_before_gen": emb_last_before_gen.cpu() if emb_last_before_gen is not None else None,
         "emb_tok_before_eos": emb_before_eos.cpu() if emb_before_eos is not None else None,
+        "token_logsumexp": token_logsumexp,
     }
